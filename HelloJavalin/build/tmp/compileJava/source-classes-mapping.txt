@@ -1,0 +1,2 @@
+no/hiof/erikvs/hellojavalin/Application.java
+ no.hiof.erikvs.hellojavalin.Application
