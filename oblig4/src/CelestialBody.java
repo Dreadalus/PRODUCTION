@@ -3,8 +3,6 @@ public abstract class CelestialBody {
     public double radius, mass;
     public static final double ONE_JUPITER_MASS = 1.898E27;
     public static final double ONE_JUPITER_RADIUS = 71492;
-    public static final double ONE_SOLAR_MASS = 1.98892E30;
-    public static final double ONE_SOLAR_RADIUS = 695700;
     public static final double GRAVITATIONAL_CONSTANT = 0.0000000000667408;
     public static final double ONE_ASTRONOMICAL_UNITS = 149597871;
 

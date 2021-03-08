@@ -1,6 +1,8 @@
 public class Star extends CelestialBody{
     //Defining member variables
     private int effectiveTemp;
+    public static final double ONE_SOLAR_MASS = 1.98892E30;
+    public static final double ONE_SOLAR_RADIUS = 695700;
 
     // constructor
     public Star(String name, double radius, double mass, int effectiveTemp) {
