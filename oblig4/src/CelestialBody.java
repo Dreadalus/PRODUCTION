@@ -1,8 +1,6 @@
 public abstract class CelestialBody {
     public String name;
     public double radius, mass;
-    public static final double ONE_JUPITER_MASS = 1.898E27;
-    public static final double ONE_JUPITER_RADIUS = 71492;
     public static final double GRAVITATIONAL_CONSTANT = 0.0000000000667408;
     public static final double ONE_ASTRONOMICAL_UNITS = 149597871;
 

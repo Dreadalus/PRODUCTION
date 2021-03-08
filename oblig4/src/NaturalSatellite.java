@@ -3,6 +3,8 @@ public abstract class NaturalSatellite extends CelestialBody {
     private double semiMajorAxis, eccentricity;
     private int orbitalPeriod;
     private CelestialBody centralCelestialBody;
+    public static final double ONE_JUPITER_MASS = 1.898E27;
+    public static final double ONE_JUPITER_RADIUS = 71492;
 
     public NaturalSatellite (String name, double radius, double mass, double semiMajorAxis, double eccentricity, int orbitalPeriod, CelestialBody centralCelestialBody){
         super(name, radius, mass);
