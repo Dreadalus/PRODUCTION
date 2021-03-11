@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public class UniverseDataRepository implements UniverseRepository{
 
     // Defining ArrayList which will contain Lists of objects
-    private ArrayList<PlanetSystem> planetSystemList = new ArrayList<PlanetSystem>();
+    private ArrayList<PlanetSystem> planetSystemList = new ArrayList<>();
 
     public UniverseDataRepository(){
 
         // Initializing all data regarding our planet system
-        PlanetSystem solarSystem = new PlanetSystem("The Solar System"); // Which contains the Array of Planets and a CenterStar
-        ArrayList<Planet> planetList = new ArrayList<Planet>(); // The Array where planet objects are contained (within PlanetSystem)
+        PlanetSystem solarSystem = new PlanetSystem("Solar System"); // Which contains the ArrayList of Planets and a CenterStar
+        ArrayList<Planet> planetList = new ArrayList<>(); // The ArrayList where planet objects are contained (within PlanetSystem)
 
         // The contents of ArrayList planetList, our solar system
         Star sun = new Star("Sun",1.9885E30,695342,5777,"http://bit.ly/3cVhuZc");
@@ -45,8 +45,8 @@ public class UniverseDataRepository implements UniverseRepository{
         planetSystemList.add(solarSystem);
 
     }
-
-    @Override // ALL ArrayLists of planetsystems in ArrayList planetSystemList
+    //TODO: This first one may need a reference as video 11.5 @ 21:22?
+    @Override // ALL ArrayLists of planet systems in ArrayList planetSystemList
     public ArrayList<PlanetSystem> getAllPlanetSystems() {
         return planetSystemList;
     }

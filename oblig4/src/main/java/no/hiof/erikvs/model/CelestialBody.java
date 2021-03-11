@@ -4,6 +4,7 @@ public abstract class CelestialBody implements Comparable<CelestialBody>{
     public String name;
     public double radius, mass;
 
+
     public CelestialBody(String name, double radius, double mass) {
         this.name = name;
         this.radius = radius;

@@ -5,6 +5,7 @@ public abstract class NaturalSatellite extends CelestialBody {
     private double semiMajorAxis, eccentricity;
     private int orbitalPeriod;
     private CelestialBody centralCelestialBody;
+    private String pictureUrl;
     public static final double ONE_JUPITER_MASS = 1.898E27;
     public static final double ONE_JUPITER_RADIUS = 71492;
     public static final double GRAVITATIONAL_CONSTANT = 0.0000000000667408;
@@ -15,6 +16,7 @@ public abstract class NaturalSatellite extends CelestialBody {
         this.semiMajorAxis = semiMajorAxis;
         this.eccentricity = eccentricity;
         this.orbitalPeriod = orbitalPeriod;
+
 
     }
 
@@ -55,6 +57,10 @@ public abstract class NaturalSatellite extends CelestialBody {
         return centralCelestialBody;
     }
 
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
     public void setSemiMajorAxis(double semiMajorAxis) {
         this.semiMajorAxis = semiMajorAxis;
     }
@@ -65,6 +71,10 @@ public abstract class NaturalSatellite extends CelestialBody {
 
     public void setOrbitalPeriod(int orbitalPeriod) {
         this.orbitalPeriod = orbitalPeriod;
+    }
+
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
     }
 
     public void setCentralCelestialBody(CelestialBody centralCelestialBody) {
