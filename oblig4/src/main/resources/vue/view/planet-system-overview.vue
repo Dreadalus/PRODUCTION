@@ -15,7 +15,7 @@
    </div>
 </template>
 <script>
-    Vue.component("planet-system-overview", {
+    Vue.component("planet-system-overview", { // reference to vue component used in app.get for overview
         template: "#planet-system-overview",
         data: () => ({
             planetSystems: [],

@@ -15,8 +15,8 @@ public abstract class CelestialBody implements Comparable<CelestialBody>{
 
     public abstract double RadiusInKm();
 
-    //TODO: 2.1 implement Comparable in PlanetSystem
 
+    /**2.1 implement Comparable in CelestialBody**/
     @Override// method for comparing celestial bodies by mass and radius
     public int compareTo(CelestialBody otherCelestialBody) {
         int returnvalue = (int) (this.MassInKg() - otherCelestialBody.MassInKg());

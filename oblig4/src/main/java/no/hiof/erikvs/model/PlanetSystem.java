@@ -13,8 +13,8 @@ public class PlanetSystem implements Comparable<PlanetSystem>{
         this.name = name;
     }
 
-    //TODO: 2.1 implement Comparable in PlanetSystem
-   @Override
+    /**2.1 implement Comparable in PlanetSystem**/
+   @Override// method for comparing planetsystems by centerstar mass and radius
     public int compareTo(PlanetSystem otherPlanetSystem) {
         int returnvalue = (int) (this.centerStar.MassInKg() - otherPlanetSystem.centerStar.MassInKg());
 

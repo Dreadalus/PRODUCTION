@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public class UniverseDataRepository implements UniverseRepository{
 
     // Defining ArrayList which will contain Lists of objects
-    private ArrayList<PlanetSystem> planetSystemList = new ArrayList<>();
+    private ArrayList<PlanetSystem> Galaxy = new ArrayList<>();
 
     public UniverseDataRepository(){
 
         // Initializing all data regarding our planet system
-        PlanetSystem solarSystem = new PlanetSystem("Solar System"); // Which contains the ArrayList of Planets and a CenterStar
+        PlanetSystem solarSystem = new PlanetSystem("Solar System"); // Which contains a CenterStar and an ArrayList of Planets
         ArrayList<Planet> planetList = new ArrayList<>(); // The ArrayList where planet objects are contained (within PlanetSystem)
 
         // The contents of ArrayList planetList, our solar system
@@ -42,21 +42,20 @@ public class UniverseDataRepository implements UniverseRepository{
         solarSystem.setCenterStar(sun);
 
         // Adding the solar system (object solarSystem (containing planetList ArrayList and reference points)) to Arraylist containing ArrayList of Objects
-        planetSystemList.add(solarSystem);
+        Galaxy.add(solarSystem);
 
     }
-    //TODO: This first one may need a reference as video 11.5 @ 21:22?
-    @Override // ALL ArrayLists of planet systems in ArrayList planetSystemList
+    /**2.4 Implementations of methods defined in UniverseRepository to get all planet systems and a single planet system**/
+    @Override // Get all ArrayLists of planet systems in ArrayList Galaxy
     public ArrayList<PlanetSystem> getAllPlanetSystems() {
-        return planetSystemList;
+        return Galaxy;
     }
 
-    @Override // Input Solar System and Return Solar System (single arraylist within arraylist)
+    @Override // Input planet system name and return given planet system (single object within arraylist)
     public PlanetSystem getPlanetSystem(String planetSystemName) {
-        for (PlanetSystem planetSystem : planetSystemList){
+        for (PlanetSystem planetSystem : Galaxy){
             if (planetSystem.getName().equals(planetSystemName))
                 return planetSystem;
-
         }
         return null;
     }

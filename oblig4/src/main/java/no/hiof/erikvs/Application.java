@@ -13,8 +13,8 @@ public class Application {
     public static void main(String[] args) {
         Javalin app = Javalin.create().start();
 
-     /*   //TODO: Task 2.2 Hello World
-     app.get("/", new Handler() {
+    /**2.2 Hello World in Javalin**/
+     /* app.get("/", new Handler() {
             @Override
             public void handle(@NotNull Context ctx) throws Exception { //@NotNull lets you know if the context is null - is not needed to function
                 ctx.result("Hello World in Javalin!");
@@ -28,9 +28,8 @@ public class Application {
 
 
 
-        app.get("/planet-system", new VueComponent("planet-system-overview")); //ID REF 1/3
-        //TODO:
-        app.get("/api/planet-system/:planet-system-overview", new Handler() { // ID REF 2/3
+        app.get("/", new VueComponent("planet-system-overview")); // see line 18 in planet-system-overview.vue
+        app.get("/api/planet-system/", new Handler() {
             @Override
             public void handle(@NotNull Context ctx) throws Exception {
                 planetSystemController.getAllPlanetSystems(ctx);
@@ -40,9 +39,9 @@ public class Application {
         });
 
         //TODO: individual planet
-        app.get("/planet-system/:planet-system-id", new VueComponent("planet-system-detail")); //ID REF 1/3
+        app.get("/planet-system/:planet-system-id", new VueComponent("planet-system-detail"));
 
-        app.get("/api/planet-system/:planet-system-id", new Handler() { // ID REF 2/3
+        app.get("/api/planet-system/:planet-system-id", new Handler() {
             @Override
             public void handle(@NotNull Context ctx) throws Exception {
                 planetSystemController.getPlanetSystem(ctx);
@@ -50,13 +49,6 @@ public class Application {
 
             }
         });
-
-
-        //TODO: 2.6
-
-        // app.get("/planet-system/:planet-system-id", new VueComponent("system-detail"));
-
-       // app.get("/planet-system/:planet-id", new VueComponent("planet-detail"));
 
 
     }
