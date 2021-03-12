@@ -27,29 +27,43 @@ public class Application {
         PlanetSystemController planetSystemController = new PlanetSystemController(universeRepository);
 
 
-
+        /** All planet systems **/
         app.get("/", new VueComponent("planet-system-overview")); // see line 18 in planet-system-overview.vue
         app.get("/api/planet-system/", new Handler() {
             @Override
             public void handle(@NotNull Context ctx) throws Exception {
                 planetSystemController.getAllPlanetSystems(ctx);
-
-
             }
         });
 
-        //TODO: individual planet
+        /** A given planet system **/
         app.get("/planet-system/:planet-system-id", new VueComponent("planet-system-detail"));
 
         app.get("/api/planet-system/:planet-system-id", new Handler() {
             @Override
             public void handle(@NotNull Context ctx) throws Exception {
                 planetSystemController.getPlanetSystem(ctx);
-
-
             }
         });
 
 
+      //  app.get("/planet-system/:planet-system-id/planets", new VueComponent("planet-system-detail"));
+        app.get("/api/planet-system/:planet-system-id/planets", new Handler() {
+            @Override
+            public void handle(@NotNull Context ctx) throws Exception {
+                planetSystemController.getAllPlanets(ctx);
+
+            }
+        });
+
+        //TODO: given planet in given system
+        app.get("/planet-system/:planet-system-id/planets/:planet-id", new VueComponent("planet-detail"));
+        app.get("/api/planet-system/:planet-system-id/planets/:planet-id", new Handler() {
+            @Override
+            public void handle(@NotNull Context ctx) throws Exception {
+                planetSystemController.getSinglePlanet(ctx);
+
+            }
+        });
     }
 }

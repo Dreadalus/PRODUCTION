@@ -12,10 +12,11 @@ public abstract class NaturalSatellite extends CelestialBody {
     public static final double ONE_ASTRONOMICAL_UNITS = 149597871;
 
     public NaturalSatellite(String name, double radius, double mass, double semiMajorAxis, double eccentricity, int orbitalPeriod, String pictureUrl){
-        super(name, radius, mass);
+        super(name, radius, mass, pictureUrl);
         this.semiMajorAxis = semiMajorAxis;
         this.eccentricity = eccentricity;
         this.orbitalPeriod = orbitalPeriod;
+        this.pictureUrl = pictureUrl;
 
 
     }

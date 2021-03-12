@@ -4,13 +4,14 @@ import java.util.ArrayList;
 
 public class PlanetSystem implements Comparable<PlanetSystem>{
     //Defining member variables
-    private String name;
+    private String name, pictureUrl;
     private Star centerStar;
     private ArrayList<Planet> planetList;
 
     // Defining constructor
-    public PlanetSystem(String name) {
+    public PlanetSystem(String name, String pictureUrl) {
         this.name = name;
+        this.pictureUrl = pictureUrl;
     }
 
     /**2.1 implement Comparable in PlanetSystem**/
@@ -52,7 +53,7 @@ public class PlanetSystem implements Comparable<PlanetSystem>{
     }
 
     // return planet from array based on name as string input
-    Planet getPlanet(String name) {
+    public Planet getPlanet(String name) {
         Planet target = null;
         for (int i = 0; i < planetList.size(); i++) {
             if (planetList.get(i).getName().equalsIgnoreCase(name)) {
@@ -68,7 +69,7 @@ public class PlanetSystem implements Comparable<PlanetSystem>{
         return name;
     }
 
-    public void getName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -88,6 +89,14 @@ public class PlanetSystem implements Comparable<PlanetSystem>{
 
     public void setPlanetList(ArrayList<Planet> planetList) {
         this.planetList = planetList;
+    }
+
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
     }
 
     @Override

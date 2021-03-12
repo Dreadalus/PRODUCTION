@@ -1,14 +1,15 @@
 package no.hiof.erikvs.model;
 
 public abstract class CelestialBody implements Comparable<CelestialBody>{
-    public String name;
+    public String name, pictureUrl;
     public double radius, mass;
 
 
-    public CelestialBody(String name, double radius, double mass) {
+    public CelestialBody(String name, double radius, double mass, String pictureUrl) {
         this.name = name;
         this.radius = radius;
         this.mass = mass;
+        this.pictureUrl = pictureUrl;
     }
 
     public abstract double MassInKg();
@@ -52,5 +53,13 @@ public abstract class CelestialBody implements Comparable<CelestialBody>{
 
     public void setMass(double mass) {
         this.mass = mass;
+    }
+
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
     }
 }
