@@ -11,19 +11,20 @@ public abstract class NaturalSatellite extends CelestialBody {
     public static final double GRAVITATIONAL_CONSTANT = 0.0000000000667408;
     public static final double ONE_ASTRONOMICAL_UNITS = 149597871;
 
-    public NaturalSatellite(String name, double radius, double mass, double semiMajorAxis, double eccentricity, int orbitalPeriod, String pictureUrl){
+    public NaturalSatellite(String name, double radius, double mass, double semiMajorAxis, double eccentricity, int orbitalPeriod, String pictureUrl, CelestialBody centralCelestialBody){
         super(name, radius, mass, pictureUrl);
         this.semiMajorAxis = semiMajorAxis;
         this.eccentricity = eccentricity;
         this.orbitalPeriod = orbitalPeriod;
         this.pictureUrl = pictureUrl;
-
+        this.centralCelestialBody = centralCelestialBody;
 
     }
 
     /**
      * Kepler's orbit formula which returns distance in kilometers by multiplying the standard formula by 1 AU.
      * */
+
     double distanceToCentralBody(double degrees){
         double radians = Math.toRadians(degrees);
         double keplers = ((semiMajorAxis*(1-Math.pow(eccentricity,2)))/(1+eccentricity*Math.cos(radians)));
@@ -80,5 +81,6 @@ public abstract class NaturalSatellite extends CelestialBody {
 
     public void setCentralCelestialBody(CelestialBody centralCelestialBody) {
         this.centralCelestialBody = centralCelestialBody;
+
     }
 }

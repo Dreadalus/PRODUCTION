@@ -4,8 +4,8 @@ public class Planet extends NaturalSatellite {
     //member variables inherited from CelestialBody
 
     // constructor
-    public Planet(String name, double radius, double mass, double semiMajorAxis, double eccentricity, int orbitalPeriod, String pictureUrl) {
-        super(name, radius, mass, semiMajorAxis, eccentricity, orbitalPeriod, pictureUrl);
+    public Planet(String name, double radius, double mass, double semiMajorAxis, double eccentricity, int orbitalPeriod, String pictureUrl, CelestialBody centralCelestialBody) {
+        super(name, radius, mass, semiMajorAxis, eccentricity, orbitalPeriod, pictureUrl, centralCelestialBody);
     }
 
     // methods for calculating radius, mass and surface gravity of planet in km/kg/(m/s2)

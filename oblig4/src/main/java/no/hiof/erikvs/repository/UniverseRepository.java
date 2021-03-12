@@ -12,5 +12,5 @@ public interface UniverseRepository {
 
     /**2.6 Define methods for getting data for planets for frontend**/
     ArrayList<Planet> getAllPlanets(String planetSystemName);
-    Planet getSinglePlanet(String name);
+    Planet getSinglePlanet(String planetSystemName, String planetName);
 }
