@@ -4,8 +4,8 @@ public class Planet extends NaturalSatellite {
     //member variables inherited from CelestialBody
 
     // constructor
-    public Planet(String name, double radius, double mass, double semiMajorAxis, double eccentricity, int orbitalPeriod, String pictureUrl, CelestialBody centralCelestialBody) {
-        super(name, radius, mass, semiMajorAxis, eccentricity, orbitalPeriod, pictureUrl, centralCelestialBody);
+    public Planet(int solarOrder, String name, double radius, double mass, double semiMajorAxis, double eccentricity, int orbitalPeriod, String pictureUrl, CelestialBody centralCelestialBody) {
+        super(solarOrder, name, radius, mass, semiMajorAxis, eccentricity, orbitalPeriod, pictureUrl, centralCelestialBody);
     }
 
     // methods for calculating radius, mass and surface gravity of planet in km/kg/(m/s2)
@@ -25,6 +25,6 @@ public class Planet extends NaturalSatellite {
 
     @Override
     public String toString() {
-        return name + " is a planet in our solar system. It has a radius of " + radius + " km, and a mass of " + mass + " kg.";
+        return name /*+ " is a planet in our solar system. It has a radius of " + radius + " km, and a mass of " + mass + " kg."*/;
     }
 }

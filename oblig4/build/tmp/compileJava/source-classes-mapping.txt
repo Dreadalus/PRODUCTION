@@ -1,7 +1,7 @@
-no/hiof/erikvs/controller/PlanetSystemController.java
- no.hiof.erikvs.controller.PlanetSystemController
-no/hiof/erikvs/repository/UniverseDataRepository.java
- no.hiof.erikvs.repository.UniverseDataRepository
+no/hiof/erikvs/model/NaturalSatellite.java
+ no.hiof.erikvs.model.NaturalSatellite
+no/hiof/erikvs/model/CelestialBody.java
+ no.hiof.erikvs.model.CelestialBody
 no/hiof/erikvs/repository/UniverseRepository.java
  no.hiof.erikvs.repository.UniverseRepository
 no/hiof/erikvs/model/PlanetSystem.java
@@ -10,10 +10,12 @@ no/hiof/erikvs/model/Star.java
  no.hiof.erikvs.model.Star
 no/hiof/erikvs/model/Planet.java
  no.hiof.erikvs.model.Planet
-no/hiof/erikvs/model/CelestialBody.java
- no.hiof.erikvs.model.CelestialBody
-no/hiof/erikvs/model/NaturalSatellite.java
- no.hiof.erikvs.model.NaturalSatellite
+no/hiof/erikvs/controller/PlanetSystemController.java
+ no.hiof.erikvs.controller.PlanetSystemController
+no/hiof/erikvs/repository/UniverseDataRepository.java
+ no.hiof.erikvs.repository.UniverseDataRepository
+ no.hiof.erikvs.repository.UniverseDataRepository$1
+ no.hiof.erikvs.repository.UniverseDataRepository$2
 no/hiof/erikvs/Application.java
  no.hiof.erikvs.Application
  no.hiof.erikvs.Application$1

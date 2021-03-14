@@ -5,14 +5,13 @@ public abstract class NaturalSatellite extends CelestialBody {
     private double semiMajorAxis, eccentricity;
     private int orbitalPeriod;
     private CelestialBody centralCelestialBody;
-    private String pictureUrl;
     public static final double ONE_JUPITER_MASS = 1.898E27;
     public static final double ONE_JUPITER_RADIUS = 71492;
     public static final double GRAVITATIONAL_CONSTANT = 0.0000000000667408;
     public static final double ONE_ASTRONOMICAL_UNITS = 149597871;
 
-    public NaturalSatellite(String name, double radius, double mass, double semiMajorAxis, double eccentricity, int orbitalPeriod, String pictureUrl, CelestialBody centralCelestialBody){
-        super(name, radius, mass, pictureUrl);
+    public NaturalSatellite(int solarOrder, String name, double radius, double mass, double semiMajorAxis, double eccentricity, int orbitalPeriod, String pictureUrl, CelestialBody centralCelestialBody){
+        super(solarOrder, name, radius, mass, pictureUrl);
         this.semiMajorAxis = semiMajorAxis;
         this.eccentricity = eccentricity;
         this.orbitalPeriod = orbitalPeriod;
