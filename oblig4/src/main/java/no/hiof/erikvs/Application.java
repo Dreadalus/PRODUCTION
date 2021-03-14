@@ -21,14 +21,14 @@ public class Application {
             }
         });*/
 
-        app.config.enableWebjars();
+       app.config.enableWebjars();
 
         UniverseDataRepository universeRepository = new UniverseDataRepository();
         PlanetSystemController planetSystemController = new PlanetSystemController(universeRepository);
 
 
         /** All planet systems **/
-        app.get("/", new VueComponent("planet-system-overview")); // see line 18 in planet-system-overview.vue
+        app.get("/", new VueComponent("planet-system-overview"));
         app.get("/api/planet-system/", new Handler() {
             @Override
             public void handle(@NotNull Context ctx) throws Exception {
@@ -38,7 +38,6 @@ public class Application {
 
         /** A given planet system **/
         app.get("/planet-system/:planet-system-id", new VueComponent("planet-system-detail"));
-
         app.get("/api/planet-system/:planet-system-id", new Handler() {
             @Override
             public void handle(@NotNull Context ctx) throws Exception {
@@ -46,8 +45,7 @@ public class Application {
             }
         });
 
-
-      //  app.get("/planet-system/:planet-system-id/planets", new VueComponent("planet-system-detail"));
+        /** All planets **/
         app.get("/api/planet-system/:planet-system-id/planets", new Handler() {
             @Override
             public void handle(@NotNull Context ctx) throws Exception {
@@ -56,13 +54,12 @@ public class Application {
             }
         });
 
-        //TODO: given planet in given system
+        /** A given planet **/
         app.get("/planet-system/:planet-system-id/planets/:planet-id", new VueComponent("planet-detail"));
         app.get("/api/planet-system/:planet-system-id/planets/:planet-id", new Handler() {
             @Override
             public void handle(@NotNull Context ctx) throws Exception {
                 planetSystemController.getSinglePlanet(ctx);
-
             }
         });
     }

@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 
@@ -54,6 +55,9 @@ public class Main {
         System.out.println("At a distance of " + earth.distanceToCentralBody(90) + " km, the Earth has a velocity of " + earth.orbitingVelocity(earth.distanceToCentralBody(90)) + " km/s.");
         System.out.println("At a distance of " + earth.distanceToCentralBody(135) + " km, the Earth has a velocity of " + earth.orbitingVelocity(earth.distanceToCentralBody(135)) + " km/s.");
         System.out.println("At a distance of " + earth.distanceToCentralBody(180) + " km, the Earth has a velocity of " + earth.orbitingVelocity(earth.distanceToCentralBody(180)) + " km/s.");
+
+        System.out.println("At a distance of " + earth.distanceToCentralBody(180) + " km, the Earth has a velocity of " + earth.orbitingVelocity(earth.distanceToCentralBody(180)) + " km/s.");
+
 
     }
 }

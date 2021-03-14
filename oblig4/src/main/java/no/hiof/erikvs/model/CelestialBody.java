@@ -20,12 +20,13 @@ public abstract class CelestialBody implements Comparable<CelestialBody>{
     /**2.1 implement Comparable in CelestialBody**/
     @Override// method for comparing celestial bodies by mass and radius
     public int compareTo(CelestialBody otherCelestialBody) {
-        int returnvalue = (int) (this.MassInKg() - otherCelestialBody.MassInKg());
+        return this.name.compareTo(otherCelestialBody.name);
+        /* int returnvalue = (int) (this.MassInKg() - otherCelestialBody.MassInKg());
 
         if (returnvalue == 0)
-            return (int) (this.RadiusInKm()- otherCelestialBody.RadiusInKm());
+            return (int) (this.RadiusInKm() - otherCelestialBody.RadiusInKm());
 
-        return returnvalue;
+        return returnvalue;*/
     }
 
     // get/set for instance variable name

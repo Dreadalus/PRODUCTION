@@ -4,6 +4,7 @@ import no.hiof.erikvs.model.Planet;
 import no.hiof.erikvs.model.PlanetSystem;
 import no.hiof.erikvs.model.Star;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class UniverseDataRepository implements UniverseRepository {
 
@@ -68,10 +69,30 @@ public class UniverseDataRepository implements UniverseRepository {
     /**
      * 2.6 Implementations of methods defined in UniverseRepository to get all planets and a single planet of a given system
      **/
-    @Override // Get all planet objects from ArrayList planetList, Michal guided me to
-    public ArrayList<Planet> getAllPlanets(String planetSystemName) {
-        PlanetSystem target = getPlanetSystem(planetSystemName);
-        return target.getPlanetList();
+    @Override // Get all planet objects from ArrayList planetList, Michal guided me to this solution.
+    public ArrayList<Planet> getAllPlanets(String planetSystemName, String sortByParam) {
+        System.out.println(sortByParam);
+        ArrayList<Planet> target = getPlanetSystem(planetSystemName).getPlanetList();
+      /*  //if (!sortByParam.equals(null));
+                if (sortByParam.equals("name"))
+                    Collections.sort(target, new Comparator<Planet>() {
+                        @Override
+                        public int compare(Planet a, Planet b) {
+                            return a.name.compareTo(b.name);
+                        }
+                    });
+                     /*   else if (sortByParam.equals("mass"))
+                        Collections.sort(target, new Comparator<Planet>() {
+                            @Override
+                            public int compare(Planet a, Planet b) {
+                                return a.compareTo(b);
+                            }
+                        });
+                            System.out.println(target);
+                        else (sortByParam.equals("mass"))
+                            break;
+                        else (sortByParam.equals("radius"))*/
+        return target;
     }
 
    @Override // Input planet name and return given planet (object within arrayList)

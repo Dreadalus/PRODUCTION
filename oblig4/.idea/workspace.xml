@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="727456c3-0c98-4193-91aa-d3fa0b787600" name="Default Changelist" comment="oblig 4 2.6 need to sort single planet. Galaxy and planet system view works. 2.7 also done.">
+    <list default="true" id="727456c3-0c98-4193-91aa-d3fa0b787600" name="Default Changelist" comment="oblig 4 up to 2.7 done. start 2.8">
+      <change beforePath="$PROJECT_DIR$/../oblig3/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oblig3/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oblig3/src/NaturalSatellite.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oblig3/src/NaturalSatellite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/fileHashes/fileHashes.bin" afterDir="false" />
@@ -13,16 +15,15 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.7/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/no/hiof/erikvs/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/no/hiof/erikvs/Application.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/no/hiof/erikvs/model/NaturalSatellite.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/no/hiof/erikvs/model/NaturalSatellite.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/no/hiof/erikvs/model/Planet.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/no/hiof/erikvs/model/Planet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/no/hiof/erikvs/repository/UniverseDataRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/no/hiof/erikvs/repository/UniverseDataRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/no/hiof/erikvs/repository/UniverseRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/no/hiof/erikvs/repository/UniverseRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/no/hiof/erikvs/model/PlanetSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/no/hiof/erikvs/model/PlanetSystem.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/no/hiof/erikvs/model/NaturalSatellite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/no/hiof/erikvs/model/NaturalSatellite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/no/hiof/erikvs/model/Planet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/no/hiof/erikvs/model/Planet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/no/hiof/erikvs/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/no/hiof/erikvs/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/no/hiof/erikvs/model/CelestialBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/no/hiof/erikvs/model/CelestialBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/no/hiof/erikvs/model/PlanetSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/no/hiof/erikvs/model/PlanetSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/no/hiof/erikvs/repository/UniverseDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/no/hiof/erikvs/repository/UniverseDataRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/no/hiof/erikvs/repository/UniverseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/no/hiof/erikvs/repository/UniverseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/vue/view/planet-detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/vue/view/planet-detail.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +34,23 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="oblig4" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -70,7 +88,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../programmering2_v2021/Video 11 - Javalin og vue/Video 11.5 - Vue, repository og controller" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../oblig4" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -101,17 +119,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.Application" />
       <item itemvalue="Application.Main" />
@@ -130,7 +137,10 @@
       <workItem from="1615457209369" duration="22000" />
       <workItem from="1615465152861" duration="3818000" />
       <workItem from="1615469737373" duration="15854000" />
-      <workItem from="1615536390171" duration="30934000" />
+      <workItem from="1615536390171" duration="31008000" />
+      <workItem from="1615624244529" duration="6830000" />
+      <workItem from="1615663877177" duration="1848000" />
+      <workItem from="1615700948747" duration="13472000" />
     </task>
     <task id="LOCAL-00001" summary="oblig 4 2.4">
       <created>1615403219939</created>
@@ -167,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615561784332</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="oblig 4 up to 2.7 done. start 2.8">
+      <created>1615582199169</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1615582199169</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,6 +208,7 @@
     <MESSAGE value="oblig 4 2.5 b - I dunno, something wonky" />
     <MESSAGE value="oblig 4 2.6 start, everything up to here should be fine." />
     <MESSAGE value="oblig 4 2.6 need to sort single planet. Galaxy and planet system view works. 2.7 also done." />
-    <option name="LAST_COMMIT_MESSAGE" value="oblig 4 2.6 need to sort single planet. Galaxy and planet system view works. 2.7 also done." />
+    <MESSAGE value="oblig 4 up to 2.7 done. start 2.8" />
+    <option name="LAST_COMMIT_MESSAGE" value="oblig 4 up to 2.7 done. start 2.8" />
   </component>
 </project>

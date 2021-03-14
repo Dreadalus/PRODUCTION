@@ -2,6 +2,7 @@ package no.hiof.erikvs.model;
 
 import java.util.ArrayList;
 
+
 public class PlanetSystem implements Comparable<PlanetSystem>{
     //Defining member variables
     private String name, pictureUrl;

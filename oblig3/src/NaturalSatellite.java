@@ -29,7 +29,7 @@ public abstract class NaturalSatellite extends CelestialBody {
 
 
     double orbitingVelocity(double distance){
-        return (Math.sqrt((GRAVITATIONAL_CONSTANT*centralCelestialBody.MassInKg()/(distance/1000)))); //
+        return (Math.sqrt((GRAVITATIONAL_CONSTANT*centralCelestialBody.MassInKg()/(distance/1000))));
     }
 
     // getters and setters
