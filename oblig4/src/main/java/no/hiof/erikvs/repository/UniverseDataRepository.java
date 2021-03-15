@@ -70,12 +70,11 @@ public class UniverseDataRepository implements UniverseRepository {
 
     /** 2.6 Implementations of methods defined in UniverseRepository to get all planets and a single planet of a given system
      **/
-    @Override // Get all planet objects from ArrayList planetList, Michal guided me to this solution - but I had to change it a bit to make the last task work.
+    @Override // Get all planet objects from ArrayList planetList. Michal guided me to this solution - but I had to change it a bit to make the last task work.
     public ArrayList<Planet> getAllPlanets(String planetSystemName, String sortByParam) {
-        System.out.println(sortByParam);
         ArrayList<Planet> target = new ArrayList<Planet>();
         target = getPlanetSystem(planetSystemName).getPlanetList();
-        System.out.println(target);
+
         /** 2.8 Implementations of methods defined in UniverseRepository to get all planets and a single planet of a given system
          **/
         if (sortByParam.equals("name")) // Two different implementations
@@ -94,8 +93,8 @@ public class UniverseDataRepository implements UniverseRepository {
                 }
             });
         else if (sortByParam.equals("radius"))
-            target.sort(Comparator.comparing(CelestialBody::getRadius)); // short hand code - double colon ??? I stole this on the internet.
-        else if (sortByParam.equals("num"))
+            target.sort(Comparator.comparing(CelestialBody::getRadius)); // short hand code - double colon operator
+        else if (sortByParam.equals("num")) // because sort changes the order of the list, I added the variable solarOrder to celestial bodies so that there always is an original way to sort planets by.
             target.sort(Comparator.comparing(CelestialBody::getSolarOrder));
         return target;
     }
