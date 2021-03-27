@@ -1,5 +1,7 @@
 package no.hiof.erikvs.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public abstract class NaturalSatellite extends CelestialBody {
 
     private double semiMajorAxis, eccentricity;
@@ -10,7 +12,10 @@ public abstract class NaturalSatellite extends CelestialBody {
     public static final double GRAVITATIONAL_CONSTANT = 0.0000000000667408;
     public static final double ONE_ASTRONOMICAL_UNITS = 149597871;
 
-    public NaturalSatellite(int solarOrder, String name, double radius, double mass, double semiMajorAxis, double eccentricity, int orbitalPeriod, String pictureUrl, CelestialBody centralCelestialBody){
+        // Empty constructor to use for conversion from JSON
+        public NaturalSatellite(){}
+
+        public NaturalSatellite(int solarOrder, String name, double radius, double mass, double semiMajorAxis, double eccentricity, int orbitalPeriod, String pictureUrl, CelestialBody centralCelestialBody){
         super(solarOrder, name, radius, mass, pictureUrl);
         this.semiMajorAxis = semiMajorAxis;
         this.eccentricity = eccentricity;
@@ -41,45 +46,51 @@ public abstract class NaturalSatellite extends CelestialBody {
         return (Math.sqrt((GRAVITATIONAL_CONSTANT*centralCelestialBody.MassInKg()/(distance/1000)))); //
     }
 
-    // getters and setters
+    // get/set for instance variable semiMajorAxis
+
+    @JsonProperty("semiMajorAxis")
     public double getSemiMajorAxis() {
         return semiMajorAxis;
-    }
-
-    public double getEccentricity() {
-        return eccentricity;
-    }
-
-    public int getOrbitalPeriod() {
-        return orbitalPeriod;
-    }
-
-    public CelestialBody getCentralCelestialBody() {
-        return centralCelestialBody;
-    }
-
-    public String getPictureUrl() {
-        return pictureUrl;
     }
 
     public void setSemiMajorAxis(double semiMajorAxis) {
         this.semiMajorAxis = semiMajorAxis;
     }
 
+    // get/set for instance variable eccentricity
+    @JsonProperty("eccentricity")
+    public double getEccentricity() {
+        return eccentricity;
+    }
+
     public void setEccentricity(double eccentricity) {
         this.eccentricity = eccentricity;
+    }
+
+    // get/set for instance variable orbitalPeriod
+    @JsonProperty("orbitalPeriod")
+    public int getOrbitalPeriod() {
+        return orbitalPeriod;
     }
 
     public void setOrbitalPeriod(int orbitalPeriod) {
         this.orbitalPeriod = orbitalPeriod;
     }
 
-    public void setPictureUrl(String pictureUrl) {
-        this.pictureUrl = pictureUrl;
+    // get/set for instance variable centralCelestialBody
+    @JsonProperty("centralCelestialBody")
+    public CelestialBody getCentralCelestialBody() {
+        return centralCelestialBody;
     }
 
     public void setCentralCelestialBody(CelestialBody centralCelestialBody) {
-        this.centralCelestialBody = centralCelestialBody;
+        this.centralCelestialBody = centralCelestialBody;}
 
-    }
+    // get/set for instance variable pictureUrl
+        public String getPictureUrl() {
+            return pictureUrl; }
+
+        public void setPictureUrl(String pictureUrl) {
+            this.pictureUrl = pictureUrl; }
+
 }

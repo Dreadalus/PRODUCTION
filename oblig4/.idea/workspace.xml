@@ -6,7 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="727456c3-0c98-4193-91aa-d3fa0b787600" name="Default Changelist" comment="oblig 4 done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/no/hiof/erikvs/repository/UniverseDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/no/hiof/erikvs/repository/UniverseDataRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oblig5/.gradle/6.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../oblig5/.gradle/6.7/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oblig5/.gradle/6.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../oblig5/.gradle/6.7/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oblig5/.gradle/6.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../oblig5/.gradle/6.7/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oblig5/.gradle/6.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../oblig5/.gradle/6.7/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oblig5/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../oblig5/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oblig5/build/classes/java/main/no/hiof/erikvs/model/CelestialBody.class" beforeDir="false" afterPath="$PROJECT_DIR$/../oblig5/build/classes/java/main/no/hiof/erikvs/model/CelestialBody.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oblig5/build/classes/java/main/no/hiof/erikvs/model/PlanetSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/../oblig5/build/classes/java/main/no/hiof/erikvs/model/PlanetSystem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oblig5/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../oblig5/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oblig5/src/main/java/no/hiof/erikvs/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oblig5/src/main/java/no/hiof/erikvs/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oblig5/src/main/java/no/hiof/erikvs/model/CelestialBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oblig5/src/main/java/no/hiof/erikvs/model/CelestialBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oblig5/src/main/java/no/hiof/erikvs/model/NaturalSatellite.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oblig5/src/main/java/no/hiof/erikvs/model/NaturalSatellite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oblig5/src/main/java/no/hiof/erikvs/model/PlanetSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oblig5/src/main/java/no/hiof/erikvs/model/PlanetSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oblig5/src/main/java/no/hiof/erikvs/repository/UniverseDataRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oblig5/src/main/java/no/hiof/erikvs/repository/UniverseJSONRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oblig5/src/main/java/no/hiof/erikvs/repository/UniverseJSONRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oblig5/src/main/java/no/hiof/erikvs/repository/UniverseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../oblig5/src/main/java/no/hiof/erikvs/repository/UniverseRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +85,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../oblig3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -126,6 +140,8 @@
       <workItem from="1615700948747" duration="22190000" />
       <workItem from="1615754264423" duration="180000" />
       <workItem from="1615795773045" duration="4224000" />
+      <workItem from="1616741575138" duration="682000" />
+      <workItem from="1616756799058" duration="628000" />
     </task>
     <task id="LOCAL-00001" summary="oblig 4 2.4">
       <created>1615403219939</created>

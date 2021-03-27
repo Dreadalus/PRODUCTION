@@ -1,10 +1,24 @@
 package no.hiof.erikvs.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Star.class, name = "star")
+})
+
 public abstract class CelestialBody implements Comparable<CelestialBody>{
     public int solarOrder;
     public String name, pictureUrl;
     public double radius, mass;
 
+    // Empty constructor to use for conversion from JSON
+    public CelestialBody(){}
 
     public CelestialBody(int solarOrder, String name, double radius, double mass, String pictureUrl) {
         this.solarOrder = solarOrder;
@@ -19,12 +33,13 @@ public abstract class CelestialBody implements Comparable<CelestialBody>{
     public abstract double RadiusInKm();
 
 
-    /**2.1 implement Comparable in CelestialBody**/
+    // Implementation of Comparable
     @Override// method for comparing celestial bodies by mass and radius
     public int compareTo(CelestialBody otherCelestialBody) {
         return this.name.compareTo(otherCelestialBody.name);
     }
 
+    @JsonProperty("name")
     // get/set for instance variable name
     public String getName() {
         return name;
@@ -34,6 +49,7 @@ public abstract class CelestialBody implements Comparable<CelestialBody>{
         this.name = name;
     }
 
+    @JsonProperty("radius")
     // get/set for instance variable radius
     public double getRadius() {
         return radius;
@@ -43,6 +59,7 @@ public abstract class CelestialBody implements Comparable<CelestialBody>{
         this.radius = radius;
     }
 
+    @JsonProperty("mass")
     // get/set for instance variable mass
     public double getMass() {
         return mass;
@@ -52,6 +69,7 @@ public abstract class CelestialBody implements Comparable<CelestialBody>{
         this.mass = mass;
     }
 
+    @JsonProperty("pictureUrl")
     // get/set for instance variable pictureUrl
     public String getPictureUrl() {
         return pictureUrl;

@@ -5,64 +5,94 @@ import no.hiof.erikvs.model.CelestialBody;
 import no.hiof.erikvs.model.Planet;
 import no.hiof.erikvs.model.PlanetSystem;
 
+import java.io.IOException;
+import java.util.*;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
 
 public class UniverseJSONRepository implements UniverseRepository{
 
-    // Defining HashMap which will contain Lists of objects
-    HashMap<String, PlanetSystem> Galaxy = new ObjectMapper().readValue(new File("src\\main\\resources\\planets_100.json", String.valueOf(HashMap.class)));
+    //TODO: fix the instance variables so you can deserialize JSON?
 
-    // Defining ArrayList which will contain Lists of objects
-    //private ArrayList<PlanetSystem> Galaxy = new ArrayList<>();
+    // Instantiate HashMap to store JSON data in.
+    private HashMap <String, PlanetSystem> planetSystemHashMap = new HashMap<String, PlanetSystem>();
 
-    // The ArrayList where planet objects are contained (within PlanetSystem)
-    private ArrayList<Planet> planetList = new ArrayList<>();
-
-    public UniverseJSONRepository() {
+    public UniverseJSONRepository(File jsonFile)  {
 
         // Creating instance of objectmapper class, used to read and write JSON.
-        ObjectMapper objectmapper = new ObjectMapper();
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        // Read data from JSON and store in HashMap - benefits of storing in HashMap is that we can grab data by value over index as would be done in ArrayList.
+        try {
+            System.out.println(jsonFile);
+            PlanetSystem[] planetSystemArrayList = objectMapper.readValue(jsonFile, PlanetSystem[].class);
+
+            for (PlanetSystem system : planetSystemArrayList){
+                planetSystemHashMap.put(system.getName(), system);
+            }
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+
+        /*  // Initial attempt at 2.1
+          try {
+                ArrayList<PlanetSystem> Galaxy = objectmapper.readValue("planets_100.json", PlanetSystem.class);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }*/
+
+            // Defining HashMap which will contain planetsystems from JSON and fill it with objects from JSON - https://stackoverflow.com/questions/21544973/convert-jsonobject-to-map/21545023 convert jsonObject to Map
+           /* try {
 
 
-        // Take either file name or File-object in constructor
-        //TODO: make this work and add try/catch
-      //  PlanetSystem Galaxy = objectmapper.readValue(new File("src\\main\\resources\\planets_100.json", String.valueOf(PlanetSystem.class)));
+                HashMap<Integer, PlanetSystem> planetSystemHashMap = objectmapper.readValue(Paths.get("src/main/resources/planets_100.json").toFile(), HashMap.class); //new ObjectMapper().readValue(new File("src\\main\\resources\\planets_100.json", String.valueOf(HashMap.class)));
+
+                // converting hashmap to ArrayList
+                Collection<PlanetSystem> values = planetSystemHashMap.values();
+                List<PlanetSystem> planetSystemArrayList = new ArrayList<PlanetSystem>(values);
+
+                for (PlanetSystem system : planetSystemArrayList){
+                Galaxy.add(system);
+                }
+                System.out.println(Galaxy.get(5));
+
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }*/
+
+        /* Set<Entry<Integer, PlanetSystem>> entrySet = planetSystemHashMap.entrySet();
+            List<Map.Entry<Integer, PlanetSystem> >planetSystemArrayList = new ArrayList<Map.Entry<Integer, PlanetSystem> >(entrySet);
+                */
+
 
     }
 
-    //TODO: need to change this to work with hashmap
-        /**
-         * 2.4 Implementations of methods defined in UniverseRepository to get all planet systems and a single planet system
-         **/
-        @Override // Get all ArrayLists of planet systems in ArrayList Galaxy
+    /** 5-2.1 HashMap methods **/
+        @Override // Get all planetsystems from HashMap and stick them in new local ArrayList
         public ArrayList<PlanetSystem> getAllPlanetSystems() {
-            return Galaxy;
+            return new ArrayList<>(planetSystemHashMap.values());
         }
 
-        @Override // Input planet system name and return given planet system (single object within arraylist)
+        @Override // Input planet system name and return given planet system (picking out value from HashMap by name)
         public PlanetSystem getPlanetSystem(String planetSystemName) {
-            for (PlanetSystem planetSystem : Galaxy) {
+            for (PlanetSystem planetSystem : planetSystemHashMap.values()) {
                 if (planetSystem.getName().equalsIgnoreCase(planetSystemName))
                     return planetSystem;
             }
             return null;
         }
 
-        /** 2.1 HashMap methods **/
 
 
-        /** 2.6 Implementations of methods defined in UniverseRepository to get all planets and a single planet of a given system
+        /** 4-2.6 Implementations of methods defined in UniverseRepository to get all planets and a single planet of a given system
          **/
         @Override // Get all planet objects from ArrayList planetList. Michal guided me to this solution - but I had to change it a bit to make the last task work.
         public ArrayList<Planet> getAllPlanets(String planetSystemName, String sortByParam) {
             ArrayList<Planet> target = new ArrayList<Planet>();
             target = getPlanetSystem(planetSystemName).getPlanetList();
 
-            /** 2.8 Implementations of methods defined in UniverseRepository to get all planets and a single planet of a given system
+            /** 4-2.8 Implementations of methods defined in UniverseRepository to get all planets and a single planet of a given system
              **/
             if (sortByParam.equals("name")) // Two different implementations
                 Collections.sort(target, new Comparator<Planet>() {
@@ -88,7 +118,7 @@ public class UniverseJSONRepository implements UniverseRepository{
 
         @Override // Input planet name and return given planet (object within arrayList)
         public Planet getSinglePlanet(String planetSystemName, String planetName) {
-            for (PlanetSystem planetSystem : Galaxy){
+            for (PlanetSystem planetSystem : planetSystemHashMap.values()){
                 if (planetSystem.getName().equalsIgnoreCase(planetSystemName))
                     return planetSystem.getPlanet(planetName);
             }

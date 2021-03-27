@@ -1,9 +1,10 @@
 package no.hiof.erikvs.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 
-
-public class PlanetSystem implements Comparable<PlanetSystem>{
+public class PlanetSystem extends ArrayList<PlanetSystem> implements Comparable<PlanetSystem>{
     //Defining member variables
     private String name, pictureUrl;
     private Star centerStar;
@@ -12,6 +13,7 @@ public class PlanetSystem implements Comparable<PlanetSystem>{
     // Empty constructor to use for conversion from JSON
     public PlanetSystem(){
     }
+
     // Defining constructor
     public PlanetSystem(String name, String pictureUrl) {
         this.name = name;
@@ -69,6 +71,7 @@ public class PlanetSystem implements Comparable<PlanetSystem>{
     }
 
     // get/set for instance variable name
+    @JsonProperty("name")
     public String getName() {
         return name;
     }
@@ -78,6 +81,7 @@ public class PlanetSystem implements Comparable<PlanetSystem>{
     }
 
     // get/set for instance variable centerStar
+    @JsonProperty("centerStar")
     public Star getCenterStar() {
         return centerStar;
     }
@@ -87,6 +91,7 @@ public class PlanetSystem implements Comparable<PlanetSystem>{
     }
 
     // get/set for ArrayList planets
+    @JsonProperty("planets")
     public ArrayList<Planet> getPlanetList() {
         return planetList;
     }
@@ -95,6 +100,8 @@ public class PlanetSystem implements Comparable<PlanetSystem>{
         this.planetList = planetList;
     }
 
+    // get/set for pictureUrl
+    @JsonProperty("pictureURL")
     public String getPictureUrl() {
         return pictureUrl;
     }

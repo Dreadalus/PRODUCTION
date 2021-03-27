@@ -5,9 +5,10 @@ import io.javalin.http.Context;
 import io.javalin.http.Handler;
 import io.javalin.plugin.rendering.vue.VueComponent;
 import no.hiof.erikvs.controller.PlanetSystemController;
-import no.hiof.erikvs.repository.UniverseDataRepository;
 import no.hiof.erikvs.repository.UniverseJSONRepository;
 import org.jetbrains.annotations.NotNull; //@NotNull lets you know if the context is null - is not needed to function
+
+import java.io.File;
 
 public class Application {
 
@@ -24,7 +25,8 @@ public class Application {
 
        app.config.enableWebjars();
 
-        UniverseJSONRepository universeJSONRepository = new UniverseJSONRepository();
+       // cannot find with filename "planets_100.json", MismatchedInputException with "src/main/resources/planets_100.json"
+        UniverseJSONRepository universeJSONRepository = new UniverseJSONRepository(new File("src/main/resources/planets_100.json"));
         PlanetSystemController planetSystemController = new PlanetSystemController(universeJSONRepository);
 
 
