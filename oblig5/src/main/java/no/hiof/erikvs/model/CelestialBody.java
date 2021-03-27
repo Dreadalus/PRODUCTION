@@ -13,15 +13,15 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 })
 
 public abstract class CelestialBody implements Comparable<CelestialBody>{
-    public int solarOrder;
+    //public int solarOrder;
     public String name, pictureUrl;
     public double radius, mass;
 
     // Empty constructor to use for conversion from JSON
     public CelestialBody(){}
 
-    public CelestialBody(int solarOrder, String name, double radius, double mass, String pictureUrl) {
-        this.solarOrder = solarOrder;
+    public CelestialBody(/*int solarOrder,*/ String name, double radius, double mass, String pictureUrl) {
+       // this.solarOrder = solarOrder;
         this.name = name;
         this.radius = radius;
         this.mass = mass;
@@ -78,7 +78,7 @@ public abstract class CelestialBody implements Comparable<CelestialBody>{
     public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
     }
-
+    /*
     // get/Set for instance variable solarOrder
     public int getSolarOrder() {
         return solarOrder;
@@ -86,5 +86,5 @@ public abstract class CelestialBody implements Comparable<CelestialBody>{
 
     public void setSolarOrder(int solarOrder) {
         this.solarOrder = solarOrder;
-    }
+    }*/
 }

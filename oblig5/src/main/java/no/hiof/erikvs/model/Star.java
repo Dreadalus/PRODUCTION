@@ -13,8 +13,8 @@ public class Star extends CelestialBody{
     }
 
     // constructor
-    public Star(int solarOrder, String name, double radius, double mass, int effectiveTemp, String pictureUrl) {
-        super(solarOrder, name, radius, mass, pictureUrl);
+    public Star(/*int solarOrder,*/ String name, double radius, double mass, int effectiveTemp, String pictureUrl) {
+        super(/*solarOrder,*/ name, radius, mass, pictureUrl);
         this.effectiveTemp = effectiveTemp;
     }
 

@@ -15,8 +15,8 @@ public abstract class NaturalSatellite extends CelestialBody {
         // Empty constructor to use for conversion from JSON
         public NaturalSatellite(){}
 
-        public NaturalSatellite(int solarOrder, String name, double radius, double mass, double semiMajorAxis, double eccentricity, int orbitalPeriod, String pictureUrl, CelestialBody centralCelestialBody){
-        super(solarOrder, name, radius, mass, pictureUrl);
+        public NaturalSatellite(/*int solarOrder,*/ String name, double radius, double mass, double semiMajorAxis, double eccentricity, int orbitalPeriod, String pictureUrl, CelestialBody centralCelestialBody){
+        super(/*solarOrder,*/ name, radius, mass, pictureUrl);
         this.semiMajorAxis = semiMajorAxis;
         this.eccentricity = eccentricity;
         this.orbitalPeriod = orbitalPeriod;

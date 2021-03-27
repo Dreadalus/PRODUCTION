@@ -109,10 +109,10 @@ public class UniverseJSONRepository implements UniverseRepository{
                         return returnvalue;
                     }
                 });
-            else if (sortByParam.equals("radius"))
+          /*  else if (sortByParam.equals("radius"))
                 target.sort(Comparator.comparing(CelestialBody::getRadius)); // short hand code - double colon operator
             else if (sortByParam.equals("num")) // because sort changes the order of the list, I added the variable solarOrder to celestial bodies so that there always is an original way to sort planets by.
-                target.sort(Comparator.comparing(CelestialBody::getSolarOrder));
+                target.sort(Comparator.comparing(CelestialBody::getSolarOrder));*/
             return target;
         }
 
