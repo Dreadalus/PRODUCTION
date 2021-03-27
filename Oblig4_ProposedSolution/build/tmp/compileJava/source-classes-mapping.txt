@@ -1,0 +1,25 @@
+no/hiof/larseknu/oblig4/model/PlanetSystem.java
+ no.hiof.larseknu.oblig4.model.PlanetSystem
+no/hiof/larseknu/oblig4/repository/UniverseRepository.java
+ no.hiof.larseknu.oblig4.repository.UniverseRepository
+no/hiof/larseknu/oblig4/model/CelestialBody.java
+ no.hiof.larseknu.oblig4.model.CelestialBody
+no/hiof/larseknu/oblig4/controller/PlanetSystemController.java
+ no.hiof.larseknu.oblig4.controller.PlanetSystemController
+no/hiof/larseknu/oblig4/model/Star.java
+ no.hiof.larseknu.oblig4.model.Star
+no/hiof/larseknu/oblig4/Main.java
+ no.hiof.larseknu.oblig4.Main
+no/hiof/larseknu/oblig4/repository/UniverseDataRepository.java
+ no.hiof.larseknu.oblig4.repository.UniverseDataRepository
+no/hiof/larseknu/oblig4/model/NaturalSatellite.java
+ no.hiof.larseknu.oblig4.model.NaturalSatellite
+no/hiof/larseknu/oblig4/model/Planet.java
+ no.hiof.larseknu.oblig4.model.Planet
+no/hiof/larseknu/oblig4/controller/PlanetController.java
+ no.hiof.larseknu.oblig4.controller.PlanetController
+ no.hiof.larseknu.oblig4.controller.PlanetController$1
+no/hiof/larseknu/oblig4/Application.java
+ no.hiof.larseknu.oblig4.Application
+ no.hiof.larseknu.oblig4.Application$1
+ no.hiof.larseknu.oblig4.Application$2
