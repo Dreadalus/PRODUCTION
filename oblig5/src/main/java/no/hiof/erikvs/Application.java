@@ -9,6 +9,7 @@ import no.hiof.erikvs.repository.UniverseJSONRepository;
 import org.jetbrains.annotations.NotNull; //@NotNull lets you know if the context is null - is not needed to function
 
 import java.io.File;
+import java.io.IOException;
 
 public class Application {
 
@@ -25,9 +26,16 @@ public class Application {
 
        app.config.enableWebjars();
 
-
         UniverseJSONRepository universeJSONRepository = new UniverseJSONRepository(new File("src/main/resources/planets_100.json")); // to create information
         PlanetSystemController planetSystemController = new PlanetSystemController(universeJSONRepository);
+
+        // testing method 5-2.1d
+        try {
+            universeJSONRepository.writeToJSONFile(universeJSONRepository.planetSystemHashMap,"src/main/resources/planets_100.json");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(universeJSONRepository.planetSystemHashMap);
 
 
         /** All planet systems **/

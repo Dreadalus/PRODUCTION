@@ -13,7 +13,7 @@ import java.io.File;
 public class UniverseJSONRepository implements UniverseRepository{
 
     // Instantiate HashMap to store JSON data in.
-    private HashMap <String, PlanetSystem> planetSystemHashMap = new HashMap<String, PlanetSystem>();
+    public HashMap <String, PlanetSystem> planetSystemHashMap = new HashMap<String, PlanetSystem>();
 
     public UniverseJSONRepository(File jsonFile)  {
 
@@ -23,7 +23,7 @@ public class UniverseJSONRepository implements UniverseRepository{
         /** 5-2.1 method to read data **/
         // Read data from JSON and store in HashMap - benefits of storing in HashMap is that we can grab data by value over index as would be done in ArrayList.
         try {
-            System.out.println(jsonFile);
+            //System.out.println(jsonFile);
             PlanetSystem[] planetSystemArrayList = objectMapper.readValue(jsonFile, PlanetSystem[].class);
 
             for (PlanetSystem system : planetSystemArrayList){
@@ -83,6 +83,13 @@ public class UniverseJSONRepository implements UniverseRepository{
                     return planetSystem;
             }
             return null;
+        }
+
+        /** 5-.2-1d**/
+        public static void writeToJSONFile(HashMap <String, PlanetSystem> planetSystemHashMap, String path) throws IOException {
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(path), planetSystemHashMap);
         }
 
 
