@@ -15,7 +15,7 @@ public class Application {
     public static void main(String[] args) {
         Javalin app = Javalin.create().start();
 
-    /**2.2 Hello World in Javalin**/
+    /**4-2.2 Hello World in Javalin**/
      /* app.get("/", new Handler() {
             @Override
             public void handle(@NotNull Context ctx) throws Exception { //@NotNull lets you know if the context is null - is not needed to function
@@ -25,8 +25,8 @@ public class Application {
 
        app.config.enableWebjars();
 
-       // cannot find with filename "planets_100.json", MismatchedInputException with "src/main/resources/planets_100.json"
-        UniverseJSONRepository universeJSONRepository = new UniverseJSONRepository(new File("src/main/resources/planets_100.json"));
+
+        UniverseJSONRepository universeJSONRepository = new UniverseJSONRepository(new File("src/main/resources/planets_100.json")); // to create information
         PlanetSystemController planetSystemController = new PlanetSystemController(universeJSONRepository);
 
 

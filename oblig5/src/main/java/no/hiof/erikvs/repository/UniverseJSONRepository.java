@@ -21,6 +21,7 @@ public class UniverseJSONRepository implements UniverseRepository{
         // Creating instance of objectmapper class, used to read and write JSON.
         ObjectMapper objectMapper = new ObjectMapper();
 
+        /** 5-2.1 method to read data **/
         // Read data from JSON and store in HashMap - benefits of storing in HashMap is that we can grab data by value over index as would be done in ArrayList.
         try {
             System.out.println(jsonFile);

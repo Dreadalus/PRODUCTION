@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
 
-public class PlanetSystem extends ArrayList<PlanetSystem> implements Comparable<PlanetSystem>{
+public class PlanetSystem implements Comparable<PlanetSystem>{
     //Defining member variables
     private String name, pictureUrl;
     private Star centerStar;
@@ -101,7 +101,7 @@ public class PlanetSystem extends ArrayList<PlanetSystem> implements Comparable<
     }
 
     // get/set for pictureUrl
-    @JsonProperty("pictureURL")
+    @JsonProperty("pictureUrl")
     public String getPictureUrl() {
         return pictureUrl;
     }
