@@ -1,5 +1,6 @@
 package no.hiof.erikvs.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Star extends CelestialBody{
@@ -19,11 +20,13 @@ public class Star extends CelestialBody{
     }
 
     // methods for calculating radius and mass of star
+    @JsonIgnore
     @Override
     public double RadiusInKm() {
         return radius * ONE_SOLAR_RADIUS;
     }
 
+    @JsonIgnore
     @Override
     public double MassInKg() {
         return mass * ONE_SOLAR_MASS;
@@ -79,6 +82,7 @@ public class Star extends CelestialBody{
         this.pictureUrl = pictureUrl;
     }
 
+    @JsonIgnore
     @Override
     public String toString() {
         return name + " is the largest star in our solar system. It has a radius of " + radius + " km, and a mass of " + mass + " kg.";

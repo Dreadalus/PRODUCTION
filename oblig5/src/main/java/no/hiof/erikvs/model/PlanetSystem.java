@@ -1,5 +1,6 @@
 package no.hiof.erikvs.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class PlanetSystem implements Comparable<PlanetSystem>{
     }
 
     /**2.1 implement Comparable in PlanetSystem**/
+    @JsonIgnore
    @Override// method for comparing planetsystems by centerstar mass and radius
     public int compareTo(PlanetSystem otherPlanetSystem) {
         int returnvalue = (int) (this.centerStar.MassInKg() - otherPlanetSystem.centerStar.MassInKg());
@@ -32,6 +34,7 @@ public class PlanetSystem implements Comparable<PlanetSystem>{
     }
 
     //methods for returning largest and smallest planets
+    @JsonIgnore
     public String biggestPlanet() {
         Planet biggest = planetList.get(0);
         for (int i = 0; i < planetList.size(); i++) {
@@ -45,6 +48,7 @@ public class PlanetSystem implements Comparable<PlanetSystem>{
         return biggest.getName();
     }
 
+    @JsonIgnore
     public String smallestPlanet() {
         Planet smallest = planetList.get(0);
         for (int i = 0; i < planetList.size(); i++) {
@@ -59,6 +63,7 @@ public class PlanetSystem implements Comparable<PlanetSystem>{
     }
 
     // return planet from array based on name as string input
+    @JsonIgnore
     public Planet getPlanet(String name) {
         Planet target = null;
         for (int i = 0; i < planetList.size(); i++) {
@@ -110,6 +115,7 @@ public class PlanetSystem implements Comparable<PlanetSystem>{
         this.pictureUrl = pictureUrl;
     }
 
+    @JsonIgnore
     @Override
     public String toString() {
         return name + " is the coolest place I have ever been. " + centerStar.getName() + " is very hot. " + planetList.get(0).getName() + " is a planet of this planet system.";

@@ -1,5 +1,6 @@
 package no.hiof.erikvs.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -34,6 +35,7 @@ public abstract class CelestialBody implements Comparable<CelestialBody>{
 
 
     // Implementation of Comparable
+    @JsonIgnore
     @Override// method for comparing celestial bodies by mass and radius
     public int compareTo(CelestialBody otherCelestialBody) {
         return this.name.compareTo(otherCelestialBody.name);

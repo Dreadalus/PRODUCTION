@@ -1,5 +1,6 @@
 package no.hiof.erikvs.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Planet extends NaturalSatellite {
@@ -15,16 +16,19 @@ public class Planet extends NaturalSatellite {
     }
 
     // methods for calculating radius, mass and surface gravity of planet in km/kg/(m/s2)
+    @JsonIgnore
     @Override
     public double RadiusInKm() {
         return radius *  ONE_JUPITER_RADIUS;
     }
 
+    @JsonIgnore
     @Override
     public double MassInKg() {
         return mass * ONE_JUPITER_MASS;
     }
 
+    @JsonIgnore
     public double getSurfaceGravity() {
         return GRAVITATIONAL_CONSTANT * MassInKg() / Math.pow(((RadiusInKm())*1000), 2);
     }
@@ -69,7 +73,7 @@ public class Planet extends NaturalSatellite {
         this.pictureUrl = pictureUrl;
     }
 
-
+    @JsonIgnore
     @Override
     public String toString() {
         return name + " is a planet in our solar system. It has a radius of " + radius + " km, and a mass of " + mass + " kg.";

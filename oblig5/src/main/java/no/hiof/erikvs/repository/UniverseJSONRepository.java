@@ -1,5 +1,6 @@
 package no.hiof.erikvs.repository;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import no.hiof.erikvs.model.CelestialBody;
 import no.hiof.erikvs.model.Planet;
@@ -10,8 +11,6 @@ import java.util.*;
 import java.io.File;
 
 public class UniverseJSONRepository implements UniverseRepository{
-
-    //TODO: fix the instance variables so you can deserialize JSON?
 
     // Instantiate HashMap to store JSON data in.
     private HashMap <String, PlanetSystem> planetSystemHashMap = new HashMap<String, PlanetSystem>();
@@ -70,11 +69,13 @@ public class UniverseJSONRepository implements UniverseRepository{
     }
 
     /** 5-2.1 HashMap methods **/
+        @JsonIgnore
         @Override // Get all planetsystems from HashMap and stick them in new local ArrayList
         public ArrayList<PlanetSystem> getAllPlanetSystems() {
             return new ArrayList<>(planetSystemHashMap.values());
         }
 
+        @JsonIgnore
         @Override // Input planet system name and return given planet system (picking out value from HashMap by name)
         public PlanetSystem getPlanetSystem(String planetSystemName) {
             for (PlanetSystem planetSystem : planetSystemHashMap.values()) {
@@ -88,6 +89,7 @@ public class UniverseJSONRepository implements UniverseRepository{
 
         /** 4-2.6 Implementations of methods defined in UniverseRepository to get all planets and a single planet of a given system
          **/
+        @JsonIgnore
         @Override // Get all planet objects from ArrayList planetList. Michal guided me to this solution - but I had to change it a bit to make the last task work.
         public ArrayList<Planet> getAllPlanets(String planetSystemName, String sortByParam) {
             ArrayList<Planet> target = new ArrayList<Planet>();
@@ -110,13 +112,14 @@ public class UniverseJSONRepository implements UniverseRepository{
                         return returnvalue;
                     }
                 });
-          /*  else if (sortByParam.equals("radius"))
+            else if (sortByParam.equals("radius"))
                 target.sort(Comparator.comparing(CelestialBody::getRadius)); // short hand code - double colon operator
             else if (sortByParam.equals("num")) // because sort changes the order of the list, I added the variable solarOrder to celestial bodies so that there always is an original way to sort planets by.
-                target.sort(Comparator.comparing(CelestialBody::getSolarOrder));*/
+                target.sort(Comparator.comparing(CelestialBody::getSolarOrder));
             return target;
         }
 
+        @JsonIgnore
         @Override // Input planet name and return given planet (object within arrayList)
         public Planet getSinglePlanet(String planetSystemName, String planetName) {
             for (PlanetSystem planetSystem : planetSystemHashMap.values()){

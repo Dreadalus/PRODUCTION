@@ -1,5 +1,6 @@
 package no.hiof.erikvs.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public abstract class NaturalSatellite extends CelestialBody {
@@ -28,7 +29,7 @@ public abstract class NaturalSatellite extends CelestialBody {
     /**
      * Kepler's orbit formula which returns distance in kilometers by multiplying the standard formula by 1 AU.
      * */
-
+    @JsonIgnore
     double distanceToCentralBody(double degrees){
         double radians = Math.toRadians(degrees);
         double keplers = ((semiMajorAxis*(1-Math.pow(eccentricity,2)))/(1+eccentricity*Math.cos(radians)));
@@ -36,12 +37,13 @@ public abstract class NaturalSatellite extends CelestialBody {
     }
 
     // Alternate use of kepler's orbit formula taking radians directly instead of converting from degrees.
+    @JsonIgnore
     double distanceToCentralBodyV2(double radians){
         double keplers = ((semiMajorAxis*(1-Math.pow(eccentricity,2)))/(1+eccentricity*Math.cos(radians)));
         return keplers*ONE_ASTRONOMICAL_UNITS;
     }
 
-
+    @JsonIgnore
     double orbitingVelocity(double distance){
         return (Math.sqrt((GRAVITATIONAL_CONSTANT*centralCelestialBody.MassInKg()/(distance/1000)))); //
     }
@@ -86,10 +88,10 @@ public abstract class NaturalSatellite extends CelestialBody {
         this.centralCelestialBody = centralCelestialBody;}
 
     // get/set for instance variable pictureUrl
-        public String getPictureUrl() {
-            return pictureUrl; }
+    public String getPictureUrl() {
+        return pictureUrl; }
 
-        public void setPictureUrl(String pictureUrl) {
-            this.pictureUrl = pictureUrl; }
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl; }
 
 }
