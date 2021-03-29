@@ -5,6 +5,7 @@ import io.javalin.http.Context;
 import io.javalin.http.Handler;
 import io.javalin.plugin.rendering.vue.VueComponent;
 import no.hiof.erikvs.controller.PlanetSystemController;
+import no.hiof.erikvs.repository.UniverseCSVRepository;
 import no.hiof.erikvs.repository.UniverseJSONRepository;
 import org.jetbrains.annotations.NotNull; //@NotNull lets you know if the context is null - is not needed to function
 
@@ -29,13 +30,16 @@ public class Application {
         UniverseJSONRepository universeJSONRepository = new UniverseJSONRepository(new File("src/main/resources/planets_100.json")); // to create information
         PlanetSystemController planetSystemController = new PlanetSystemController(universeJSONRepository);
 
+        /*UniverseCSVRepository universeCSVRepository = new UniverseCSVRepository(new File("src/main/resources/planets_100.csv"));
+        PlanetSystemController planetSystemController = new PlanetSystemController(universeCSVRepository);*/
+
         // testing method 5-2.1d
-        try {
+      /*try {
             universeJSONRepository.writeToJSONFile(universeJSONRepository.planetSystemHashMap,"src/main/resources/planets_100.json");
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(universeJSONRepository.planetSystemHashMap);
+        System.out.println(universeJSONRepository.planetSystemHashMap);*/
 
 
         /** All planet systems **/
