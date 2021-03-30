@@ -12,17 +12,17 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonSubTypes({
         @JsonSubTypes.Type(value = Star.class, name = "star")
 })
-
+//TODO: Removed reference to solarOrder
 public abstract class CelestialBody implements Comparable<CelestialBody>{
-    public int solarOrder;
+    /*public int solarOrder;*/
     public String name, pictureUrl;
     public double radius, mass;
 
     // Empty constructor to use for conversion from JSON
     public CelestialBody(){}
-
-    public CelestialBody(int solarOrder, String name, double radius, double mass, String pictureUrl) {
-        this.solarOrder = solarOrder;
+    //TODO: Removed reference to solarOrder
+    public CelestialBody(/*int solarOrder, */String name, double radius, double mass, String pictureUrl) {
+        /*this.solarOrder = solarOrder;*/
         this.name = name;
         this.radius = radius;
         this.mass = mass;
@@ -81,12 +81,13 @@ public abstract class CelestialBody implements Comparable<CelestialBody>{
         this.pictureUrl = pictureUrl;
     }
 
-    // get/Set for instance variable solarOrder
+    //TODO: Removed reference to solarOrder
+    /*// get/Set for instance variable solarOrder
     public int getSolarOrder() {
         return solarOrder;
     }
 
     public void setSolarOrder(int solarOrder) {
         this.solarOrder = solarOrder;
-    }
+    }*/
 }

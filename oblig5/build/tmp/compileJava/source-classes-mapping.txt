@@ -4,8 +4,6 @@ no/hiof/erikvs/repository/UniverseRepository.java
  no.hiof.erikvs.repository.UniverseRepository
 no/hiof/erikvs/model/PlanetSystem.java
  no.hiof.erikvs.model.PlanetSystem
-no/hiof/erikvs/Main.java
- no.hiof.erikvs.Main
 no/hiof/erikvs/model/Star.java
  no.hiof.erikvs.model.Star
 no/hiof/erikvs/model/Planet.java
@@ -20,7 +18,3 @@ no/hiof/erikvs/Application.java
  no.hiof.erikvs.Application$4
 no/hiof/erikvs/model/NaturalSatellite.java
  no.hiof.erikvs.model.NaturalSatellite
-no/hiof/erikvs/repository/UniverseJSONRepository.java
- no.hiof.erikvs.repository.UniverseJSONRepository
- no.hiof.erikvs.repository.UniverseJSONRepository$1
- no.hiof.erikvs.repository.UniverseJSONRepository$2

@@ -1,3 +1,4 @@
+/* //TODO: Whole thing has been block commented
 package no.hiof.erikvs.repository;
 import no.hiof.erikvs.model.Planet
 import no.hiof.erikvs.model.Planet;
@@ -36,7 +37,8 @@ public class UniverseCSVRepository {
 
                 // I need an empty list in the planetsystem to dump my planets into...
 
-               /*  read a planetsystem object in from csv where
+               */
+/*  read a planetsystem object in from csv where
                0 is systemname
                1 is pictureURL - planetlist
                2 is star name
@@ -51,7 +53,8 @@ public class UniverseCSVRepository {
                11 is eccentricity
                12 is orbital period
                13 is planet picture - planet object
-               */
+               *//*
+
 
 
 
@@ -65,3 +68,4 @@ public class UniverseCSVRepository {
 
     }
 }
+*/

@@ -14,10 +14,14 @@ public class Star extends CelestialBody{
     }
 
     // constructor
-    public Star(int solarOrder, String name, double radius, double mass, int effectiveTemp, String pictureUrl) {
-        super(solarOrder, name, radius, mass, pictureUrl);
+    public Star(String name, double radius, double mass, int effectiveTemp, String pictureUrl) {
+        super(name, radius, mass, pictureUrl);
         this.effectiveTemp = effectiveTemp;
     }
+
+    public Star(String value, String value1, String value2, String value3, String value4) {
+    }
+
 
     // methods for calculating radius and mass of star
     @JsonIgnore
