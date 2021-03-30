@@ -24,17 +24,17 @@ public class Main {
             while ((line = bufferedReader.readLine()) != null) { // reads each line of csv until there are none left
                 String[] values = line.split(";"); // splits values on given string
 
-                if (readCSVList.contains(values[0]))
+                if (!readCSVList.contains(values[0]))
                 {// checking if name of planetsystem is in readCSVList, if it isnt new planetsystem is created
                     PlanetSystem planetSystem = new PlanetSystem(values[0], values[1]); //TODO: so all systems are called planetSystem? Im sure this crashes the fucking code.
                     ArrayList<Planet> planetList = new ArrayList<>();
                     planetSystem.setPlanetList(planetList); // sets planetlist for newly created system
                     readCSVList.add(planetSystem); }
-                else if (readCSVList.contains(values[2]))
+                else if (!readCSVList.contains(values[2]))
                 { // checking if name of centerstar is in readCSVList, if it isnt new star is created
                     Star star = new Star(values[2], values[3], values[4], values[5], values[6]);
                     planetSystem.setCenterStar(star);  //TODO: cant add to system contained locally within loop above?
-                } else if (readCSVList.contains(values[7]))
+                } else if (!readCSVList.contains(values[7]))
                 {
                     Planet planet = new Planet(values[7], values[8], values[9], values[10], values[11], values[12], values[13]);
                     planetList.add(planet); //TODO: cant add to planet contained locally within loop above?
