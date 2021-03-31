@@ -1,71 +1,106 @@
-/* //TODO: Whole thing has been block commented
+
 package no.hiof.erikvs.repository;
-import no.hiof.erikvs.model.Planet
+
 import no.hiof.erikvs.model.Planet;
 import no.hiof.erikvs.model.PlanetSystem;
-
+import no.hiof.erikvs.model.Star;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public class UniverseCSVRepository {
+public class UniverseCSVRepository implements UniverseRepository{
+
+    // source CSV location
     File source = new File("src/main/resources/planets_100.csv");
 
-    public UniverseCSVRepository(File csvFile){
+    // Create empty list that will contain objects read from CSV which are created below
+    ArrayList<PlanetSystem> readCSVList = new ArrayList<>();
 
-        ArrayList<PlanetSystem> readCSVList = new ArrayList<>(); // Create empty list that will contain objects
+    public UniverseCSVRepository(File csvFile) {
 
-
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(source)))     {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(source))) {
             String line;
 
-            while ((line = bufferedReader.readLine()) != null) {
-                String[] values = line.split(";");
+            PlanetSystem tempPlanetSystem = new PlanetSystem();
+            ArrayList<Planet> tempPlanetList = new ArrayList<>();
 
-                //TODO: First define planet system and star. IF value 0 of line == value 0 of planet system, make planet object and add it to system
-                //TODO repeat this within the while loop
+            /**Each rotation of the while corresponds to one line of CSV.
+             * If the storage does not contain a given planetsystem, a full rotation is run
+             * creating both the system, star and first planet + the storage hierarchy for current system
+             * the else runs if the system exists, and fills it with remaining planets.
+             * When a new systemname is read, a new if rotation is started.
+             * **/
 
-                // determine how many lines of CSV you are working with and create planet systems
-                // then fill systems with respective planets (this is done in the video)
+            while ((line = bufferedReader.readLine()) != null) { // reads each line of csv until there are none left
+                String[] values = line.split(";"); // splits values on given string
+                List<String> list = Arrays.asList(values); //storing strings in list to work with easier
 
-                //loop 1 define planet system
-                PlanetSystem planetsystem = new PlanetSystem(values[0],values[1]);//I want a centerstar & list of planets here
-                // if planetsystem has 0 == True, check value 3 if not true add star, if 3 == True, check value 7 and add planet, if 7 == TRUE next.
+                if (!list.contains(tempPlanetSystem.getName())) {
+                    if (tempPlanetSystem.getName() != null) { // if current planetsystem is empty do this
+                        tempPlanetSystem.setPlanetList(tempPlanetList); // define current planetlist as planetlist for current system
+                        readCSVList.add(tempPlanetSystem); // add current planetsystem to storage
+                    }
 
-               //loop 2 fill planets into list of planets and then add this list to respective planet system.
-                Planet planet = new Planet(values[])
-                readCSVList.add(planetsystem);
+                    // System.out.println("****************************************************************");
 
-                // I need an empty list in the planetsystem to dump my planets into...
+                    tempPlanetSystem = new PlanetSystem(values[0], values[1]); // create planetsystem out of CSV values
+                    // System.out.println("Creating new system: " + tempPlanetSystem.getName());
 
-               */
-/*  read a planetsystem object in from csv where
-               0 is systemname
-               1 is pictureURL - planetlist
-               2 is star name
-               3 is star radius
-               4 is star mass
-               5 is star effective temp
-               6 is star picture - star defined as centerCelestialBody
-               7 is planet name
-               8 is planet radius
-               9 is planet mass
-               10 is semimajor
-               11 is eccentricity
-               12 is orbital period
-               13 is planet picture - planet object
-               *//*
+                    Star tempStar = new Star(values[2], Double.parseDouble(values[3]), Double.parseDouble(values[4]), Double.parseDouble(values[5]), values[6]); // create centerstar out of CSV values
+                    // System.out.println("Creating new star: " + tempStar.getName());
+                    tempPlanetSystem.setCenterStar(tempStar); // define current star as centerstar for current planetsystem
 
+                    Planet tempPlanet = new Planet(values[7], Double.parseDouble(values[8]), Double.parseDouble(values[9]), Double.parseDouble(values[10]), Double.parseDouble(values[11]), Double.parseDouble(values[12]), values[13], tempStar); // create planet out of CSV values
+                    //  System.out.println("Creating new plant: " + tempPlanet);
+                    tempPlanetList.add(tempPlanet); // add current planet to planetlist
 
-
+                } else {
+                    Star tempStar = new Star(values[2], Double.parseDouble(values[3]), Double.parseDouble(values[4]), Double.parseDouble(values[5]), values[6]); // creating local star as variable to make planet object in next line
+                    Planet tempPlanet = new Planet(values[7], Double.parseDouble(values[8]), Double.parseDouble(values[9]), Double.parseDouble(values[10]), Double.parseDouble(values[11]), Double.parseDouble(values[12]), values[13], tempStar);
+                    //  System.out.println("Creating new star: " + tempPlanet);
+                    tempPlanetList.add(tempPlanet);
+                }
 
             }
+            tempPlanetSystem.setPlanetList(tempPlanetList);
+            readCSVList.add(tempPlanetSystem);
+           /* System.out.println("****************************************************************");
+            System.out.println("Number of systems created: " + readCSVList.size());
+            System.out.println("Name of first system: " + readCSVList.get(0).getName());
+            System.out.println("First system star: " + readCSVList.get(0).getCenterStar());
+            System.out.println("First system plant: " + readCSVList.get(0).getPlanetList().get(0));*/
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException fileNotFoundException) {
+            fileNotFoundException.printStackTrace();
+        } catch (IOException exception) {
+            System.out.println(exception.getMessage());
         }
+    }
+
+    //TODO make implementations of methods for csv
+    @Override
+    public ArrayList<PlanetSystem> getAllPlanetSystems() {
+        return readCSVList;
+    }
+
+    @Override
+    public PlanetSystem getPlanetSystem(String planetSystemName) {
+        if (readCSVList.contains(planetSystemName)
+            return readCSVList.get()getPlanetSystem()
+
 
     }
+
+    @Override
+    public ArrayList<Planet> getAllPlanets(String planetSystemName, String sortByParam) {
+        return readCSVList.getPlanetSystem().getPlanetList();
+    }
+
+    @Override
+    public Planet getSinglePlanet(String planetSystemName, String planetName) {
+        return getPlanetSystem(planetSystemName).getPlanet(planetName);
+    }
 }
-*/
+}
+

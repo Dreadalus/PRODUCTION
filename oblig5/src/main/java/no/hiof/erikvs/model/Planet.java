@@ -11,12 +11,10 @@ public class Planet extends NaturalSatellite {
     }
 
     //TODO: removed the reference to solarOrder
-    // constructor
-    public Planet(/*int solarOrder, */String name, double radius, double mass, double semiMajorAxis, double eccentricity, int orbitalPeriod, String pictureUrl, CelestialBody centralCelestialBody) {
-        super(/*solarOrder, */name, radius, mass, semiMajorAxis, eccentricity, orbitalPeriod, pictureUrl, centralCelestialBody);
-    }
 
-    public Planet(String value, String value1, String value2, String value3, String value4, String value5, String value6) {
+    // constructor
+    public Planet(/*int solarOrder, */String name, double radius, double mass, double semiMajorAxis, double eccentricity, double orbitalPeriod, String pictureUrl, CelestialBody centralCelestialBody) {
+        super(/*solarOrder, */name, radius, mass, semiMajorAxis, eccentricity, orbitalPeriod, pictureUrl, centralCelestialBody);
     }
 
     // methods for calculating radius, mass and surface gravity of planet in km/kg/(m/s2)

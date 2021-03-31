@@ -11,8 +11,11 @@ import org.jetbrains.annotations.NotNull; //@NotNull lets you know if the contex
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 
 public class Application {
+
+
 
     public static void main(String[] args) {
         Javalin app = Javalin.create().start();
@@ -29,6 +32,8 @@ public class Application {
 
         UniverseJSONRepository universeJSONRepository = new UniverseJSONRepository(new File("src/main/resources/planets_100.json")); // to create information
         PlanetSystemController planetSystemController = new PlanetSystemController(universeJSONRepository);
+
+        System.out.println();
 
         /*UniverseCSVRepository universeCSVRepository = new UniverseCSVRepository(new File("src/main/resources/planets_100.csv"));
         PlanetSystemController planetSystemController = new PlanetSystemController(universeCSVRepository);*/

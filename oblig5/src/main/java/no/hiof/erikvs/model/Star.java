@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Star extends CelestialBody{
     //Defining member variables
-    private int effectiveTemp;
+    private double effectiveTemp;
     public static final double ONE_SOLAR_MASS = 1.98892E30;
     public static final double ONE_SOLAR_RADIUS = 695700;
 
@@ -14,12 +14,9 @@ public class Star extends CelestialBody{
     }
 
     // constructor
-    public Star(String name, double radius, double mass, int effectiveTemp, String pictureUrl) {
+    public Star(String name, double radius, double mass, double effectiveTemp, String pictureUrl) {
         super(name, radius, mass, pictureUrl);
         this.effectiveTemp = effectiveTemp;
-    }
-
-    public Star(String value, String value1, String value2, String value3, String value4) {
     }
 
 
@@ -38,7 +35,7 @@ public class Star extends CelestialBody{
 
     // get/set for instance variable effectiveTemp
     @JsonProperty("effectiveTemp")
-    public int getEffectiveTemp() {
+    public double getEffectiveTemp() {
         return effectiveTemp;
     }
 
