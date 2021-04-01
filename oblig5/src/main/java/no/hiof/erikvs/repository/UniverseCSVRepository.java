@@ -1,13 +1,12 @@
 
 package no.hiof.erikvs.repository;
 
+import no.hiof.erikvs.model.CelestialBody;
 import no.hiof.erikvs.model.Planet;
 import no.hiof.erikvs.model.PlanetSystem;
 import no.hiof.erikvs.model.Star;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class UniverseCSVRepository implements UniverseRepository{
 
@@ -78,7 +77,7 @@ public class UniverseCSVRepository implements UniverseRepository{
         }
     }
 
-    //TODO make implementations of methods for csv
+
     @Override
     public ArrayList<PlanetSystem> getAllPlanetSystems() {
         return readCSVList;
@@ -86,21 +85,61 @@ public class UniverseCSVRepository implements UniverseRepository{
 
     @Override
     public PlanetSystem getPlanetSystem(String planetSystemName) {
-        if (readCSVList.contains(planetSystemName)
-            return readCSVList.get()getPlanetSystem()
-
-
+        PlanetSystem target = null;
+        for (int i = 0; i < readCSVList.size(); i++) { // loops through the arraylist and checks for name similarity
+            if (readCSVList.get(i).getName().equalsIgnoreCase(planetSystemName)) {
+                target = readCSVList.get(i);
+                break;
+            }
+        }
+        return target; //returns null if planet name is not in list. Not best practice, but ok for now. //TODO: maybe throw NoSuchElementException?
     }
 
+
+    //TODO there is an issue with this method where all planets are a part of every system
     @Override
     public ArrayList<Planet> getAllPlanets(String planetSystemName, String sortByParam) {
-        return readCSVList.getPlanetSystem().getPlanetList();
+        ArrayList<Planet> target = new ArrayList<Planet>();
+        target = getPlanetSystem(planetSystemName).getPlanetList();
+        for (int i = 0; i < readCSVList.size(); i++) { // loops through the arraylist and checks for name similarity
+            if (sortByParam.equals("name"))
+                Collections.sort(target, new Comparator<Planet>() {
+                    @Override //overriding collections.sort within itself
+                    public int compare(Planet a, Planet b) {    //anon method
+                        return a.name.compareTo(b.name);
+                    }
+                });
+            else if (sortByParam.equals("mass"))
+                Collections.sort(target, new Comparator<Planet>() {
+                    @Override
+                    public int compare(Planet a, Planet b) {
+                        int returnvalue = (int) (a.mass - b.mass);
+                        return returnvalue;
+                    }
+                });
+            else if (sortByParam.equals("radius"))
+                target.sort(Comparator.comparing(CelestialBody::getRadius)); // short hand code - double colon operator
+            //TODO: removed the reference to solarOrder
+           //else if (sortByParam.equals("num"))
+               // target.sort(Comparator.comparing(CelestialBody::getSolarOrder));
+
+        }
+        return target;
     }
 
     @Override
     public Planet getSinglePlanet(String planetSystemName, String planetName) {
-        return getPlanetSystem(planetSystemName).getPlanet(planetName);
-    }
+        ArrayList<Planet> targetList = null;
+        Planet targetPlanet = null;
+        for (int i = 0; i < readCSVList.size(); i++) {
+            if (readCSVList.get(i).getName().equalsIgnoreCase(planetSystemName))
+                targetList = readCSVList.get(i).getPlanetList();
+            for (int y = 0; y < targetList.size(); y++)
+                if (targetList.get(y).getName().equalsIgnoreCase(planetName))
+                    targetPlanet =targetList.get(y);
+        }
+        return targetPlanet;
 }
+
 }
 
