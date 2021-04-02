@@ -151,7 +151,7 @@ public class UniverseCSVRepository implements UniverseRepository {
                         + readCSVList.get(i).getCenterStar().getPictureUrl() + ";" + readCSVList.get(i).getPlanetList().get(planet).getName() + ";"
                         + readCSVList.get(i).getPlanetList().get(planet).getRadius() + ";"  + readCSVList.get(i).getPlanetList().get(planet).getMass() + ";"
                         + readCSVList.get(i).getPlanetList().get(planet).getSemiMajorAxis() + ";" + readCSVList.get(i).getPlanetList().get(planet).getEccentricity() + ";"
-                        + readCSVList.get(i).getPlanetList().get(planet).getOrbitalPeriod() + ";" + readCSVList.get(i).getPlanetList().get(planet).getPictureUrl() + ";");
+                        + readCSVList.get(i).getPlanetList().get(planet).getOrbitalPeriod() + ";" + readCSVList.get(i).getPlanetList().get(planet).getPictureUrl());
                 }
                 bufferedWriter.newLine();
             }
