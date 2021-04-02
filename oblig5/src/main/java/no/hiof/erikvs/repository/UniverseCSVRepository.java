@@ -1,6 +1,7 @@
 
 package no.hiof.erikvs.repository;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import no.hiof.erikvs.model.CelestialBody;
 import no.hiof.erikvs.model.Planet;
 import no.hiof.erikvs.model.PlanetSystem;
@@ -8,7 +9,7 @@ import no.hiof.erikvs.model.Star;
 import java.io.*;
 import java.util.*;
 
-public class UniverseCSVRepository implements UniverseRepository{
+public class UniverseCSVRepository implements UniverseRepository {
 
     // source CSV location
     File source = new File("src/main/resources/planets_100.csv");
@@ -25,12 +26,10 @@ public class UniverseCSVRepository implements UniverseRepository{
             ArrayList<Planet> tempPlanetList = new ArrayList<>();
 
             /**Each rotation of the while corresponds to one line of CSV.
-             * If the storage does not contain a given planetsystem, a full rotation is run
+             * If the storage does not contain a given planet system, a full rotation is run
              * creating both the system, star and first planet + the storage hierarchy for current system
              * the else runs if the system exists, and fills it with remaining planets.
-             * When a new systemname is read, a new if rotation is started.
-             * **/
-
+             * When a new system name is read, a new if rotation is started.**/
             while ((line = bufferedReader.readLine()) != null) { // reads each line of csv until there are none left
                 String[] values = line.split(";"); // splits values on given string
                 List<String> list = Arrays.asList(values); //storing strings in list to work with easier
@@ -39,6 +38,7 @@ public class UniverseCSVRepository implements UniverseRepository{
                     if (tempPlanetSystem.getName() != null) { // if current planetsystem is empty do this
                         tempPlanetSystem.setPlanetList(tempPlanetList); // define current planetlist as planetlist for current system
                         readCSVList.add(tempPlanetSystem); // add current planetsystem to storage
+                        tempPlanetList = new ArrayList<>(); // resets the temp list
                     }
 
                     // System.out.println("****************************************************************");
@@ -92,11 +92,9 @@ public class UniverseCSVRepository implements UniverseRepository{
                 break;
             }
         }
-        return target; //returns null if planet name is not in list. Not best practice, but ok for now. //TODO: maybe throw NoSuchElementException?
+        return target; //returns null if planet name is not in list. Not best practice, but ok for now.
     }
 
-
-    //TODO there is an issue with this method where all planets are a part of every system
     @Override
     public ArrayList<Planet> getAllPlanets(String planetSystemName, String sortByParam) {
         ArrayList<Planet> target = new ArrayList<Planet>();
@@ -120,8 +118,8 @@ public class UniverseCSVRepository implements UniverseRepository{
             else if (sortByParam.equals("radius"))
                 target.sort(Comparator.comparing(CelestialBody::getRadius)); // short hand code - double colon operator
             //TODO: removed the reference to solarOrder
-           //else if (sortByParam.equals("num"))
-               // target.sort(Comparator.comparing(CelestialBody::getSolarOrder));
+            //else if (sortByParam.equals("num"))
+            // target.sort(Comparator.comparing(CelestialBody::getSolarOrder));
 
         }
         return target;
@@ -129,17 +127,52 @@ public class UniverseCSVRepository implements UniverseRepository{
 
     @Override
     public Planet getSinglePlanet(String planetSystemName, String planetName) {
-        ArrayList<Planet> targetList = null;
+
         Planet targetPlanet = null;
         for (int i = 0; i < readCSVList.size(); i++) {
-            if (readCSVList.get(i).getName().equalsIgnoreCase(planetSystemName))
-                targetList = readCSVList.get(i).getPlanetList();
-            for (int y = 0; y < targetList.size(); y++)
-                if (targetList.get(y).getName().equalsIgnoreCase(planetName))
-                    targetPlanet =targetList.get(y);
+            if (readCSVList.get(i).getName().equalsIgnoreCase(planetSystemName)){
+                ArrayList<Planet> targetList = readCSVList.get(i).getPlanetList();
+                for (int y = 0; y < targetList.size(); y++) //get nullPointException here
+                    if (targetList.get(y).getName().equalsIgnoreCase(planetName))
+                        targetPlanet = targetList.get(y);}
         }
         return targetPlanet;
-}
+    }
+
+
+    /**5-.2.2c**/
+    public static void writeToCSVFile(ArrayList<PlanetSystem> readCSVList, File source) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(source))) {
+            for (int i = 0; i < readCSVList.size(); i++) {
+                for (int planet = 0; planet < readCSVList.get(i).getPlanetList().size(); i++){
+                bufferedWriter.write(readCSVList.get(i).getName() + ";" + readCSVList.get(i).getPictureUrl() + ";"
+                        + readCSVList.get(i).getCenterStar().getName() + ";" + readCSVList.get(i).getCenterStar().getRadius() + ";"
+                        + readCSVList.get(i).getCenterStar().getMass() + ";" + readCSVList.get(i).getCenterStar().getEffectiveTemp() + ";"
+                        + readCSVList.get(i).getCenterStar().getPictureUrl() + ";" + readCSVList.get(i).getPlanetList().get(planet).getName() + ";"
+                        + readCSVList.get(i).getPlanetList().get(planet).getRadius() + ";"  + readCSVList.get(i).getPlanetList().get(planet).getMass() + ";"
+                        + readCSVList.get(i).getPlanetList().get(planet).getSemiMajorAxis() + ";" + readCSVList.get(i).getPlanetList().get(planet).getEccentricity() + ";"
+                        + readCSVList.get(i).getPlanetList().get(planet).getOrbitalPeriod() + ";" + readCSVList.get(i).getPlanetList().get(planet).getPictureUrl() + ";");
+                }
+                bufferedWriter.newLine();
+            }
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    @Override
+    public Planet addPlanet(String planetName, double radius, double mass, double SemiMajorAxis, double Eccentricity, double orbitalPeriod, String pictureUrl) {
+        return null;
+    }
+
+    @Override
+    public Planet editPlanet() {
+        return null;
+    }
+
+    @Override
+    public Planet deletePlanet() {
+        return null;
+    }
 
 }
-

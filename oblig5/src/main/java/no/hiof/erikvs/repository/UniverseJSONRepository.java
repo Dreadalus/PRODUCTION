@@ -136,4 +136,19 @@ public class UniverseJSONRepository implements UniverseRepository{
             }
             return null;
         }
+
+    @Override
+    public Planet addPlanet(String planetName, double radius, double mass, double SemiMajorAxis, double Eccentricity, double orbitalPeriod, String pictureUrl) {
+        return null;
+    }
+
+    @Override
+    public Planet editPlanet() {
+        return null;
+    }
+
+    @Override
+    public Planet deletePlanet() {
+        return null;
+    }
 }

@@ -5,7 +5,6 @@ import io.javalin.http.Context;
 import io.javalin.http.Handler;
 import io.javalin.plugin.rendering.vue.VueComponent;
 import no.hiof.erikvs.controller.PlanetSystemController;
-//import no.hiof.erikvs.repository.UniverseCSVRepository; //TODO: remember to have this when you run CSV
 import no.hiof.erikvs.repository.UniverseCSVRepository;
 import no.hiof.erikvs.repository.UniverseJSONRepository;
 import org.jetbrains.annotations.NotNull; //@NotNull lets you know if the context is null - is not needed to function
@@ -31,12 +30,15 @@ public class Application {
 
        app.config.enableWebjars();
 
-        /*UniverseJSONRepository universeJSONRepository = new UniverseJSONRepository(new File("src/main/resources/planets_100.json")); // to create information
-        PlanetSystemController planetSystemController = new PlanetSystemController(universeJSONRepository);*/
+        /** For running with JSONrepo **/
+        UniverseJSONRepository universeJSONRepository = new UniverseJSONRepository(new File("src/main/resources/planets_100.json")); // to create information
+        PlanetSystemController planetSystemController = new PlanetSystemController(universeJSONRepository);
 
 
-        UniverseCSVRepository universeCSVRepository = new UniverseCSVRepository(new File("src/main/resources/planets_100.csv"));
-        PlanetSystemController planetSystemController = new PlanetSystemController(universeCSVRepository);
+        /** For running with CSVrepo **/
+        /* UniverseCSVRepository universeCSVRepository = new UniverseCSVRepository(new File("src/main/resources/planets_100.csv"));
+        PlanetSystemController planetSystemController = new PlanetSystemController(universeCSVRepository);*/
+
 
         // testing method 5-2.1d
       /*try {
@@ -56,7 +58,7 @@ public class Application {
             }
         });
 
-        /** A given planet system **/
+        /** A given planet system **/ //TODO: copy past this and add to the second path
         app.get("/planet-system/:planet-system-id", new VueComponent("planet-system-detail"));
         app.get("/api/planet-system/:planet-system-id", new Handler() {
             @Override
