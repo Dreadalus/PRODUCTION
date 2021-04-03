@@ -141,7 +141,7 @@ public class UniverseCSVRepository implements UniverseRepository {
 
 
     /**5-.2.2c**/
-    public static void writeToCSVFile(ArrayList<PlanetSystem> readCSVList, File source) {
+    public static void writeToCSVFile(ArrayList<PlanetSystem> readCSVList, File source) { //TODO: Only writing one planet per system, something wrong with my loop?
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(source))) {
             for (int i = 0; i < readCSVList.size(); i++) {
                 for (int planet = 0; planet < readCSVList.get(i).getPlanetList().size(); i++){
@@ -152,8 +152,9 @@ public class UniverseCSVRepository implements UniverseRepository {
                         + readCSVList.get(i).getPlanetList().get(planet).getRadius() + ";"  + readCSVList.get(i).getPlanetList().get(planet).getMass() + ";"
                         + readCSVList.get(i).getPlanetList().get(planet).getSemiMajorAxis() + ";" + readCSVList.get(i).getPlanetList().get(planet).getEccentricity() + ";"
                         + readCSVList.get(i).getPlanetList().get(planet).getOrbitalPeriod() + ";" + readCSVList.get(i).getPlanetList().get(planet).getPictureUrl());
+
+                        bufferedWriter.newLine();
                 }
-                bufferedWriter.newLine();
             }
         } catch (IOException exception) {
             exception.printStackTrace();
@@ -170,8 +171,8 @@ public class UniverseCSVRepository implements UniverseRepository {
         return null;
     }
 
-    @Override
-    public Planet deletePlanet() {
+    @Override //
+    public Planet deletePlanet(String planetSystemName, String planetName) {
         return null;
     }
 

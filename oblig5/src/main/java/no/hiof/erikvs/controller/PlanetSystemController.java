@@ -3,6 +3,8 @@ package no.hiof.erikvs.controller;
 import io.javalin.http.Context;
 import no.hiof.erikvs.model.PlanetSystem;
 import no.hiof.erikvs.repository.UniverseRepository;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import no.hiof.erikvs.model.Planet;
 
@@ -39,6 +41,13 @@ public class PlanetSystemController {
         String planetName = context.pathParam(":planet-id");
         String planetSystemName = context.pathParam(":planet-system-id");
         Planet planet = universeRepository.getSinglePlanet(planetSystemName, planetName);
+        context.json(planet);
+    }
+    // Controller for request made to delete planet
+    public void deletePlanet(Context context) throws IOException {
+        String planetName = context.pathParam(":planet-id");
+        String planetSystemName = context.pathParam(":planet-system-id");
+        Planet planet = universeRepository.deletePlanet(planetSystemName, planetName);
         context.json(planet);
     }
 }

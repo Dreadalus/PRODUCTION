@@ -1,4 +1,5 @@
 package no.hiof.erikvs.repository;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -27,7 +28,7 @@ public interface UniverseRepository {
     Planet editPlanet();
 
     // I assume we know system name and planet name and all data pertaining to a given planet - Implementation would be .remove(index which should be known)
-    Planet deletePlanet();
+    Planet deletePlanet(String planetSystemName, String planetName) throws IOException;
 
 
 

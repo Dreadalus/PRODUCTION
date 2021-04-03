@@ -58,7 +58,7 @@ public class Application {
             }
         });
 
-        /** A given planet system **/ //TODO: copy past this and add to the second path
+        /** A given planet system **/
         app.get("/planet-system/:planet-system-id", new VueComponent("planet-system-detail"));
         app.get("/api/planet-system/:planet-system-id", new Handler() {
             @Override
@@ -75,13 +75,22 @@ public class Application {
 
             }
         });
-
+        //TODO: copy past this and add to the second path
         /** A given planet **/
         app.get("/planet-system/:planet-system-id/planets/:planet-id", new VueComponent("planet-detail"));
         app.get("/api/planet-system/:planet-system-id/planets/:planet-id", new Handler() {
             @Override
             public void handle(@NotNull Context ctx) throws Exception {
                 planetSystemController.getSinglePlanet(ctx);
+            }
+        });
+
+        /** Delete **/
+        app.get("/planet-system/:planet-system-id/planets/:planet-id/delete", new VueComponent("planet-detail"));
+        app.get("/api/planet-system/:planet-system-id/planets/:planet-id/delete", new Handler() {
+            @Override
+            public void handle(@NotNull Context ctx) throws Exception {
+                planetSystemController.deletePlanet(ctx);
             }
         });
     }
