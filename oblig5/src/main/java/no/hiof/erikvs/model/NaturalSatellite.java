@@ -75,7 +75,7 @@ public abstract class NaturalSatellite extends CelestialBody {
         return orbitalPeriod;
     }
 
-    public void setOrbitalPeriod(int orbitalPeriod) {
+    public void setOrbitalPeriod(double orbitalPeriod) {
         this.orbitalPeriod = orbitalPeriod;
     }
 

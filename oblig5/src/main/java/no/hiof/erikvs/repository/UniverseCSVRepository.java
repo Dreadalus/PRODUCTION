@@ -140,6 +140,8 @@ public class UniverseCSVRepository implements UniverseRepository {
     }
 
 
+
+
     /**5-.2.2c**/
     public static void writeToCSVFile(ArrayList<PlanetSystem> readCSVList, File source) { //TODO: Only writing one planet per system, something wrong with my loop?
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(source))) {
@@ -162,16 +164,16 @@ public class UniverseCSVRepository implements UniverseRepository {
     }
 
     @Override
-    public Planet addPlanet(String planetName, double radius, double mass, double SemiMajorAxis, double Eccentricity, double orbitalPeriod, String pictureUrl) {
+    public Planet createPlanet(String planetSystemName, String planetName, double radius, double mass, double SemiMajorAxis, double Eccentricity, double orbitalPeriod, String pictureUrl) throws IOException {
         return null;
     }
 
     @Override
-    public Planet editPlanet() {
+    public Planet updatePlanet() {
         return null;
     }
 
-    @Override //
+    @Override
     public Planet deletePlanet(String planetSystemName, String planetName) {
         return null;
     }

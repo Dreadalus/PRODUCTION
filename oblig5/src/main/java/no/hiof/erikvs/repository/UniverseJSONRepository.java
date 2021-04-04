@@ -35,39 +35,6 @@ public class UniverseJSONRepository implements UniverseRepository {
             ioException.printStackTrace();
         }
 
-        /*  // Initial attempt at 2.1
-          try {
-                ArrayList<PlanetSystem> Galaxy = objectmapper.readValue("planets_100.json", PlanetSystem.class);
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }*/
-
-        // Defining HashMap which will contain planetsystems from JSON and fill it with objects from JSON - https://stackoverflow.com/questions/21544973/convert-jsonobject-to-map/21545023 convert jsonObject to Map
-           /* try {
-
-
-                HashMap<Integer, PlanetSystem> planetSystemHashMap = objectmapper.readValue(Paths.get("src/main/resources/planets_100.json").toFile(), HashMap.class); //new ObjectMapper().readValue(new File("src\\main\\resources\\planets_100.json", String.valueOf(HashMap.class)));
-
-                // converting hashmap to ArrayList
-                Collection<PlanetSystem> values = planetSystemHashMap.values();
-                List<PlanetSystem> planetSystemArrayList = new ArrayList<PlanetSystem>(values);
-
-                for (PlanetSystem system : planetSystemArrayList){
-                Galaxy.add(system);
-                }
-                System.out.println(Galaxy.get(5));
-
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }*/
-
-        /* Set<Entry<Integer, PlanetSystem>> entrySet = planetSystemHashMap.entrySet();
-            List<Map.Entry<Integer, PlanetSystem> >planetSystemArrayList = new ArrayList<Map.Entry<Integer, PlanetSystem> >(entrySet);
-                */
-
-
     }
 
     /**
@@ -145,12 +112,7 @@ public class UniverseJSONRepository implements UniverseRepository {
     }
 
     @Override
-    public Planet addPlanet(String planetName, double radius, double mass, double SemiMajorAxis, double Eccentricity, double orbitalPeriod, String pictureUrl) {
-        return null;
-    }
-
-    @Override
-    public Planet editPlanet() {
+    public Planet updatePlanet() {
         return null;
     }
 
@@ -183,6 +145,44 @@ public class UniverseJSONRepository implements UniverseRepository {
                 writeToJSONFile(planetSystemHashMap, "src/main/resources/planets_100.json");
                 return planetToDelete;
             }
+        }
+        return null;
+    }
+
+    /**
+     * 5-2.4
+     **/
+    @Override
+    public Planet createPlanet(String planetSystemName, String planetName, double radius, double mass, double semiMajorAxis, double eccentricity, double orbitalPeriod, String pictureUrl) throws IOException{
+        //TODO: Add planet based on info given from
+        Planet planetToCreate = new Planet(); //initialize object to be created
+        ObjectMapper objectMapper = new ObjectMapper();
+        for (PlanetSystem planetSystem : planetSystemHashMap.values()) {
+            if (planetSystem.getName().equalsIgnoreCase(planetSystemName)) {// define containing
+
+                PlanetSystem updatedPlanetSystem = planetSystem; // new temp system used to overwrite containing system in hashmap
+                ArrayList<Planet> updatedPlanetList = updatedPlanetSystem.getPlanetList(); // new temp planet list = temp list of temp system above
+
+                // possibly a better way to do this. Just defining parameter data as new planet data
+                planetToCreate.setName(planetName);
+                planetToCreate.setRadius(radius);
+                planetToCreate.setSemiMajorAxis(semiMajorAxis);
+                planetToCreate.setEccentricity(eccentricity);
+                planetToCreate.setOrbitalPeriod(orbitalPeriod);
+                planetToCreate.setPictureUrl(pictureUrl);
+
+                updatedPlanetList.add(planetToCreate);
+
+                updatedPlanetSystem.setPlanetList(updatedPlanetList); // updating the temp list with above change
+
+                planetSystemHashMap.replace(planetSystem.getName(), updatedPlanetSystem); // replaces existing planet system with new updated temp, effectively deleting planet
+
+                writeToJSONFile(planetSystemHashMap, "src/main/resources/planets_100.json");
+                //TODO: inside here
+
+                return null;
+            }
+
         }
         return null;
     }

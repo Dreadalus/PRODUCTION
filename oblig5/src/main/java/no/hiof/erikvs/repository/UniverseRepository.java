@@ -21,11 +21,11 @@ public interface UniverseRepository {
     /**5-2.3a**/
 
 
-    // I assume we know the system name since the option to create first appears when we are in a system
-    Planet addPlanet(String planetName, double radius, double mass, double SemiMajorAxis, double Eccentricity, double orbitalPeriod, String pictureUrl);
+
+    Planet createPlanet(String planetSystemName, String planetName, double radius, double mass, double SemiMajorAxis, double Eccentricity, double orbitalPeriod, String pictureUrl) throws IOException;
 
     // I assume we know system name and planet name and all data pertaining to a given planet - Implementation would be a loop check.
-    Planet editPlanet();
+    Planet updatePlanet();
 
     // I assume we know system name and planet name and all data pertaining to a given planet - Implementation would be .remove(index which should be known)
     Planet deletePlanet(String planetSystemName, String planetName) throws IOException;
