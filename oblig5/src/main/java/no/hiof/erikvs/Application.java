@@ -91,6 +91,7 @@ public class Application {
             @Override
             public void handle(@NotNull Context ctx) throws Exception {
                 planetSystemController.deletePlanet(ctx);
+                ctx.redirect("/planet-system/" + ctx.pathParam("planet-system-id"), 302); // javalin documentation under context
             }
         });
     }

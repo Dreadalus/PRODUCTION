@@ -95,7 +95,7 @@ public class UniverseJSONRepository implements UniverseRepository {
     public static void writeToJSONFile(HashMap<String, PlanetSystem> planetSystemHashMap, String path) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(path), planetSystemHashMap);
+        objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(path), planetSystemHashMap.values().toArray());
     }
 
 
@@ -154,17 +154,35 @@ public class UniverseJSONRepository implements UniverseRepository {
         return null;
     }
 
-    /** 5-2.3 **/
+    /**
+     * 5-2.3
+     **/
     @Override
     public Planet deletePlanet(String planetSystemName, String planetName) throws IOException {
         Planet planetToDelete = new Planet(); //initialize object to be deleted
+        ObjectMapper objectMapper = new ObjectMapper();
         for (PlanetSystem planetSystem : planetSystemHashMap.values()) {
-            if (planetSystem.getName().equalsIgnoreCase(planetSystemName)) // find the planet
+            if (planetSystem.getName().equalsIgnoreCase(planetSystemName)) {// find the planet
                 planetToDelete = planetSystem.getPlanet(planetName); // define found planet as planetToDelete
-                planetSystemHashMap.remove(planetToDelete); // delete planet
-                writeToJSONFile(planetSystemHashMap, "src/main/resources/planets_100.json"); //TODO: it runs, but does not delete, but returns empty json object?
-            return planetToDelete;
 
+                PlanetSystem updatedPlanetSystem = planetSystem; // new temp system used to overwrite containing system in hashmap
+
+                ArrayList<Planet> updatedPlanetList = updatedPlanetSystem.getPlanetList(); // new temp planet list = temp list of temp system above
+
+                // removing object defined to be deleted from temp array list of planets
+                for (int iteration = 0; iteration < updatedPlanetList.size(); iteration++) {
+                    if (updatedPlanetList.get(iteration).getName() == planetToDelete.getName()) {
+                        updatedPlanetList.remove(iteration);
+                    }
+                }
+
+                updatedPlanetSystem.setPlanetList(updatedPlanetList); // updating the temp list with above change
+
+                planetSystemHashMap.replace(planetSystem.getName(), updatedPlanetSystem); // replaces existing planet system with new updated temp, effectively deleting planet
+
+                writeToJSONFile(planetSystemHashMap, "src/main/resources/planets_100.json");
+                return planetToDelete;
+            }
         }
         return null;
     }
