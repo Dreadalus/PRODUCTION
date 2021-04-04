@@ -111,11 +111,6 @@ public class UniverseJSONRepository implements UniverseRepository {
         return null;
     }
 
-    @Override
-    public Planet updatePlanet() {
-        return null;
-    }
-
     /**
      * 5-2.3
      **/
@@ -153,12 +148,11 @@ public class UniverseJSONRepository implements UniverseRepository {
      * 5-2.4
      **/
     @Override
-    public Planet createPlanet(String planetSystemName, String planetName, double radius, double mass, double semiMajorAxis, double eccentricity, double orbitalPeriod, String pictureUrl) throws IOException{
-        //TODO: Add planet based on info given from
+    public Planet createPlanet(String planetSystemName, String planetName, double radius, double mass, double semiMajorAxis, double eccentricity, double orbitalPeriod, String pictureUrl) throws IOException {
         Planet planetToCreate = new Planet(); //initialize object to be created
         ObjectMapper objectMapper = new ObjectMapper();
         for (PlanetSystem planetSystem : planetSystemHashMap.values()) {
-            if (planetSystem.getName().equalsIgnoreCase(planetSystemName)) {// define containing
+            if (planetSystem.getName().equalsIgnoreCase(planetSystemName)) {// define containing system
 
                 PlanetSystem updatedPlanetSystem = planetSystem; // new temp system used to overwrite containing system in hashmap
                 ArrayList<Planet> updatedPlanetList = updatedPlanetSystem.getPlanetList(); // new temp planet list = temp list of temp system above
@@ -178,12 +172,70 @@ public class UniverseJSONRepository implements UniverseRepository {
                 planetSystemHashMap.replace(planetSystem.getName(), updatedPlanetSystem); // replaces existing planet system with new updated temp, effectively deleting planet
 
                 writeToJSONFile(planetSystemHashMap, "src/main/resources/planets_100.json");
-                //TODO: inside here
-
                 return null;
             }
 
         }
         return null;
     }
+
+    /**
+     * 5-2.5
+     **/
+    @Override
+    public Planet updatePlanet(String planetSystemName, String planetName, String PlanetNameNew, double radius, double mass, double semiMajorAxis, double eccentricity, double orbitalPeriod, String pictureUrl) throws IOException {
+        Planet planetToUpdate = new Planet(); //initialize object to be created
+        ObjectMapper objectMapper = new ObjectMapper();
+        for (PlanetSystem planetSystem : planetSystemHashMap.values()) {
+            if (planetSystem.getName().equalsIgnoreCase(planetSystemName)) {// define containing system //TODO: Find system
+                planetToUpdate = planetSystem.getPlanet(planetName); // define found planet as planetToUpdate //TODO: Find planet
+
+                PlanetSystem updatedPlanetSystem = planetSystem; // new temp system used to overwrite containing system in hashmap
+
+                ArrayList<Planet> updatedPlanetList = updatedPlanetSystem.getPlanetList(); // new temp planet list = temp list of temp system above
+
+                // Checking for changes to existing planet and effecting change to temp planet if change exists
+                for (int iteration = 0; iteration < updatedPlanetList.size(); iteration++) {
+                    if (updatedPlanetList.get(iteration).getName() == planetToUpdate.getName()) {
+                        if (updatedPlanetList.get(iteration).getRadius() != planetToUpdate.getRadius()) {
+                            updatedPlanetList.get(iteration).setRadius(planetToUpdate.getRadius());
+                            System.out.println(updatedPlanetList.get(iteration).getRadius());
+                        }
+                        if (updatedPlanetList.get(iteration).getMass() != planetToUpdate.getMass()) {
+                            updatedPlanetList.get(iteration).setMass(planetToUpdate.getMass());
+                            System.out.println(updatedPlanetList.get(iteration).getRadius());
+                        }
+                        if (updatedPlanetList.get(iteration).getSemiMajorAxis() != planetToUpdate.getSemiMajorAxis()) {
+                            updatedPlanetList.get(iteration).setSemiMajorAxis(planetToUpdate.getSemiMajorAxis());
+                            System.out.println(updatedPlanetList.get(iteration).getSemiMajorAxis());
+                        }
+                        if (updatedPlanetList.get(iteration).getEccentricity() != planetToUpdate.getEccentricity()) {
+                            updatedPlanetList.get(iteration).setEccentricity(planetToUpdate.getEccentricity());
+                            System.out.println(updatedPlanetList.get(iteration).getEccentricity());
+                        }
+                        if (updatedPlanetList.get(iteration).getOrbitalPeriod() != planetToUpdate.getOrbitalPeriod()) {
+                            updatedPlanetList.get(iteration).setOrbitalPeriod(planetToUpdate.getOrbitalPeriod());
+                            System.out.println(updatedPlanetList.get(iteration).getOrbitalPeriod());
+                        }
+                        if (updatedPlanetList.get(iteration).getPictureUrl() != planetToUpdate.getPictureUrl()) {
+                            updatedPlanetList.get(iteration).setPictureUrl(planetToUpdate.getPictureUrl());
+                            System.out.println(updatedPlanetList.get(iteration).pictureUrl);
+                        } else if (updatedPlanetList.get(iteration).getName() != planetToUpdate.getName()) {
+                            updatedPlanetList.get(iteration).setName(planetToUpdate.getName());
+                            System.out.println(updatedPlanetList.get(iteration).name);
+                        }
+                    }
+                }
+
+                updatedPlanetSystem.setPlanetList(updatedPlanetList); // updating the temp list with above change
+
+                planetSystemHashMap.replace(planetSystem.getName(), updatedPlanetSystem); // replaces existing planet system with new updated temp, effectively deleting planet
+
+                writeToJSONFile(planetSystemHashMap, "src/main/resources/planets_100.json");
+                return planetToUpdate;
+            }
+        }
+        return null;
+    }
+    //TODO:  Reset the planet resources
 }

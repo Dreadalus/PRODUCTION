@@ -95,6 +95,16 @@ public class Application {
             }
         });
 
+        /** Update planet**/
+        app.get("/planet-system/:planet-system-id/planets/:planet-id/update", new VueComponent("planet-update"));
+        app.post("/api/planet-system/:planet-system-id/planets/:planet-id/update", new Handler() {
+            @Override
+            public void handle(@NotNull Context ctx) throws Exception {
+                planetSystemController.updatePlanet(ctx);
+                ctx.redirect("/planet-system/" + ctx.pathParam("planet-system-id"), 302);
+            }
+        });
+
         /** Delete planet**/
         app.get("/planet-system/:planet-system-id/planets/:planet-id/delete", new VueComponent("planet-detail"));
         app.get("/api/planet-system/:planet-system-id/planets/:planet-id/delete", new Handler() {

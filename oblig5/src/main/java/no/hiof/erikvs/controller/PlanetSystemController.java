@@ -63,4 +63,18 @@ public class PlanetSystemController {
         Planet planet = universeRepository.createPlanet(planetSystemName, planetName, radius, mass, SemiMajorAxis, Eccentricity, orbitalPeriod, pictureUrl);
         context.json("");
     }
+
+    public void updatePlanet(Context context) throws IOException{
+        String planetNameNew = context.formParam("name");
+        Double radius = Double.parseDouble(context.formParam("radius"));
+        Double mass = Double.parseDouble(context.formParam("mass"));
+        Double SemiMajorAxis = Double.parseDouble(context.formParam("semiMajorAxis"));
+        Double Eccentricity = Double.parseDouble(context.formParam("eccentricity"));
+        Double orbitalPeriod = Double.parseDouble(context.formParam("orbitalPeriod"));
+        String pictureUrl = context.formParam("pictureUrl");
+        String planetSystemName = context.pathParam(":planet-system-id");
+        String planetName = context.pathParam("planet-id");
+        Planet planet = universeRepository.updatePlanet(planetSystemName, planetName, planetNameNew, radius, mass, SemiMajorAxis, Eccentricity, orbitalPeriod, pictureUrl);
+        context.json("");
+    }
 }

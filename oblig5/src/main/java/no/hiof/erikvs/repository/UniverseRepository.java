@@ -20,26 +20,10 @@ public interface UniverseRepository {
 
     /**5-2.3a**/
 
-
+    Planet deletePlanet(String planetSystemName, String planetName) throws IOException;
 
     Planet createPlanet(String planetSystemName, String planetName, double radius, double mass, double SemiMajorAxis, double Eccentricity, double orbitalPeriod, String pictureUrl) throws IOException;
 
-    // I assume we know system name and planet name and all data pertaining to a given planet - Implementation would be a loop check.
-    Planet updatePlanet();
-
-    // I assume we know system name and planet name and all data pertaining to a given planet - Implementation would be .remove(index which should be known)
-    Planet deletePlanet(String planetSystemName, String planetName) throws IOException;
-
-
-
-  /*  planet name ;
-    planet radius ;
-    planet mass ;
-    planet semiMajor ;
-    planet eccentricity ;
-    planet orbital ;
-    planet pic ;*/
-
-
+    Planet updatePlanet(String planetSystemName, String planetName, String PlanetNameNew, double radius, double mass, double semiMajorAxis, double eccentricity, double orbitalPeriod, String pictureUrl) throws IOException;
 
 }

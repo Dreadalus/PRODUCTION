@@ -493,23 +493,6 @@
     }
   }, {
     "type" : "Planet",
-    "name" : "Mars",
-    "pictureUrl" : "http://bit.ly/3aGyFvr",
-    "radius" : 0.04741089912158004,
-    "mass" : 3.3667017913593256E-4,
-    "semiMajorAxis" : 1.524,
-    "eccentricity" : 0.093,
-    "orbitalPeriod" : 687.0,
-    "centralCelestialBody" : {
-      "type" : "star",
-      "name" : "Sun",
-      "pictureUrl" : "http://bit.ly/333CTus",
-      "radius" : 1.0,
-      "mass" : 1.0,
-      "effectiveTemp" : 5777.0
-    }
-  }, {
-    "type" : "Planet",
     "name" : "Mercury",
     "pictureUrl" : "http://bit.ly/2TB2Heo",
     "radius" : 0.03412549655905556,

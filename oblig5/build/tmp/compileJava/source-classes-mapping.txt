@@ -25,6 +25,8 @@ no/hiof/erikvs/Application.java
  no.hiof.erikvs.Application$3
  no.hiof.erikvs.Application$4
  no.hiof.erikvs.Application$5
+ no.hiof.erikvs.Application$6
+ no.hiof.erikvs.Application$7
 no/hiof/erikvs/repository/UniverseJSONRepository.java
  no.hiof.erikvs.repository.UniverseJSONRepository
  no.hiof.erikvs.repository.UniverseJSONRepository$1
