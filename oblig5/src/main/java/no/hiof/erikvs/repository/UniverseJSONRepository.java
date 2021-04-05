@@ -5,14 +5,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import no.hiof.erikvs.model.CelestialBody;
 import no.hiof.erikvs.model.Planet;
 import no.hiof.erikvs.model.PlanetSystem;
-
 import java.io.IOException;
 import java.util.*;
 import java.io.File;
 
-import static java.time.chrono.JapaneseEra.values;
-
-public class UniverseJSONRepository implements UniverseRepository {
+//TODO: implementing runnable to allow for making the thread logic
+public class UniverseJSONRepository implements UniverseRepository, Runnable{
 
     // Instantiate HashMap to store JSON data in.
     public HashMap<String, PlanetSystem> planetSystemHashMap = new HashMap<String, PlanetSystem>();
@@ -65,6 +63,17 @@ public class UniverseJSONRepository implements UniverseRepository {
         objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(path), planetSystemHashMap.values().toArray());
     }
 
+    /**2.6**/
+    @Override
+    public void run() {
+        try {
+            writeToJSONFile(planetSystemHashMap, "src/main/resources/planets_100.json");
+            System.out.println(Thread.currentThread().getName());
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+
+    }
 
     /**
      * 4-2.6 Implementations of methods defined in UniverseRepository to get all planets and a single planet of a given system
@@ -137,7 +146,8 @@ public class UniverseJSONRepository implements UniverseRepository {
 
                 planetSystemHashMap.replace(planetSystem.getName(), updatedPlanetSystem); // replaces existing planet system with new updated temp, effectively deleting planet
 
-                writeToJSONFile(planetSystemHashMap, "src/main/resources/planets_100.json");
+               // writeToJSONFile(planetSystemHashMap, "src/main/resources/planets_100.json"); //TODO: a call to write
+                run();
                 return planetToDelete;
             }
         }
@@ -171,7 +181,8 @@ public class UniverseJSONRepository implements UniverseRepository {
 
                 planetSystemHashMap.replace(planetSystem.getName(), updatedPlanetSystem); // replaces existing planet system with new updated temp, effectively deleting planet
 
-                writeToJSONFile(planetSystemHashMap, "src/main/resources/planets_100.json");
+                //writeToJSONFile(planetSystemHashMap, "src/main/resources/planets_100.json"); //TODO: a call to write
+                run();
                 return null;
             }
 
@@ -224,11 +235,13 @@ public class UniverseJSONRepository implements UniverseRepository {
 
                 planetSystemHashMap.replace(planetSystem.getName(), updatedPlanetSystem); // replaces existing planet system with new updated temp, effectively deleting planet
 
-                writeToJSONFile(planetSystemHashMap, "src/main/resources/planets_100.json");
+                //writeToJSONFile(planetSystemHashMap, "src/main/resources/planets_100.json"); //TODO: a call to write
+                run();
                 return null;
             }
         }
         return null;
     }
+
     //TODO:  Reset the planet resources
 }

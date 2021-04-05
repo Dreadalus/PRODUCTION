@@ -34,19 +34,13 @@ public class Application {
         UniverseJSONRepository universeJSONRepository = new UniverseJSONRepository(new File("src/main/resources/planets_100.json")); // to create information
         PlanetSystemController planetSystemController = new PlanetSystemController(universeJSONRepository);
 
+        /** For thread functionality with JSON **/
+        Thread universeJSONRepositoryThread = new Thread(universeJSONRepository);
+        universeJSONRepositoryThread.start();
 
         /** For running with CSVrepo **/
         /* UniverseCSVRepository universeCSVRepository = new UniverseCSVRepository(new File("src/main/resources/planets_100.csv"));
         PlanetSystemController planetSystemController = new PlanetSystemController(universeCSVRepository);*/
-
-
-        // testing method 5-2.1d
-      /*try {
-            universeJSONRepository.writeToJSONFile(universeJSONRepository.planetSystemHashMap,"src/main/resources/planets_100.json");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println(universeJSONRepository.planetSystemHashMap);*/
 
 
         /** All planet systems **/
@@ -81,11 +75,10 @@ public class Application {
             @Override
             public void handle(@NotNull Context ctx) throws Exception {
                 planetSystemController.createPlanet(ctx);
-                ctx.redirect("/planet-system/" + ctx.pathParam("planet-system-id"), 302);
+                ctx.redirect("/planet-system/" + ctx.pathParam("planet-system-id"), 302); // javalin documentation under context, adding status code is good practice
             }
         });
 
-        //TODO: copy past this and add to the second path
         /** A given planet **/
         app.get("/planet-system/:planet-system-id/planets/:planet-id", new VueComponent("planet-detail"));
         app.get("/api/planet-system/:planet-system-id/planets/:planet-id", new Handler() {
@@ -111,7 +104,7 @@ public class Application {
             @Override
             public void handle(@NotNull Context ctx) throws Exception {
                 planetSystemController.deletePlanet(ctx);
-                ctx.redirect("/planet-system/" + ctx.pathParam("planet-system-id"), 302); // javalin documentation under context
+                ctx.redirect("/planet-system/" + ctx.pathParam("planet-system-id"), 302);
             }
         });
     }

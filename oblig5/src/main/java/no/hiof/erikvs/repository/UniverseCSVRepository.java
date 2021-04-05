@@ -35,24 +35,24 @@ public class UniverseCSVRepository implements UniverseRepository {
                 List<String> list = Arrays.asList(values); //storing strings in list to work with easier
 
                 if (!list.contains(tempPlanetSystem.getName())) {
-                    if (tempPlanetSystem.getName() != null) { // if current planetsystem is empty do this
-                        tempPlanetSystem.setPlanetList(tempPlanetList); // define current planetlist as planetlist for current system
-                        readCSVList.add(tempPlanetSystem); // add current planetsystem to storage
+                    if (tempPlanetSystem.getName() != null) { // if current planet system is empty do this
+                        tempPlanetSystem.setPlanetList(tempPlanetList); // define current planet list as planet list for current system
+                        readCSVList.add(tempPlanetSystem); // add current planet system to storage
                         tempPlanetList = new ArrayList<>(); // resets the temp list
                     }
 
                     // System.out.println("****************************************************************");
 
-                    tempPlanetSystem = new PlanetSystem(values[0], values[1]); // create planetsystem out of CSV values
+                    tempPlanetSystem = new PlanetSystem(values[0], values[1]); // create planet system out of CSV values
                     // System.out.println("Creating new system: " + tempPlanetSystem.getName());
 
-                    Star tempStar = new Star(values[2], Double.parseDouble(values[3]), Double.parseDouble(values[4]), Double.parseDouble(values[5]), values[6]); // create centerstar out of CSV values
+                    Star tempStar = new Star(values[2], Double.parseDouble(values[3]), Double.parseDouble(values[4]), Double.parseDouble(values[5]), values[6]); // create center star out of CSV values
                     // System.out.println("Creating new star: " + tempStar.getName());
-                    tempPlanetSystem.setCenterStar(tempStar); // define current star as centerstar for current planetsystem
+                    tempPlanetSystem.setCenterStar(tempStar); // define current star as center star for current planet system
 
                     Planet tempPlanet = new Planet(values[7], Double.parseDouble(values[8]), Double.parseDouble(values[9]), Double.parseDouble(values[10]), Double.parseDouble(values[11]), Double.parseDouble(values[12]), values[13], tempStar); // create planet out of CSV values
                     //  System.out.println("Creating new plant: " + tempPlanet);
-                    tempPlanetList.add(tempPlanet); // add current planet to planetlist
+                    tempPlanetList.add(tempPlanet); // add current planet to planet list
 
                 } else {
                     Star tempStar = new Star(values[2], Double.parseDouble(values[3]), Double.parseDouble(values[4]), Double.parseDouble(values[5]), values[6]); // creating local star as variable to make planet object in next line
@@ -64,11 +64,6 @@ public class UniverseCSVRepository implements UniverseRepository {
             }
             tempPlanetSystem.setPlanetList(tempPlanetList);
             readCSVList.add(tempPlanetSystem);
-           /* System.out.println("****************************************************************");
-            System.out.println("Number of systems created: " + readCSVList.size());
-            System.out.println("Name of first system: " + readCSVList.get(0).getName());
-            System.out.println("First system star: " + readCSVList.get(0).getCenterStar());
-            System.out.println("First system plant: " + readCSVList.get(0).getPlanetList().get(0));*/
 
         } catch (FileNotFoundException fileNotFoundException) {
             fileNotFoundException.printStackTrace();
@@ -142,7 +137,7 @@ public class UniverseCSVRepository implements UniverseRepository {
 
 
 
-    /**5-.2.2c**/
+    /**5-2.2c**/
     public static void writeToCSVFile(ArrayList<PlanetSystem> readCSVList, File source) { //TODO: Only writing one planet per system, something wrong with my loop?
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(source))) {
             for (int i = 0; i < readCSVList.size(); i++) {
