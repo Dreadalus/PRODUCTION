@@ -6,6 +6,7 @@ import no.hiof.erikvs.model.CelestialBody;
 import no.hiof.erikvs.model.Planet;
 import no.hiof.erikvs.model.PlanetSystem;
 import no.hiof.erikvs.model.Star;
+
 import java.io.*;
 import java.util.*;
 
@@ -41,23 +42,15 @@ public class UniverseCSVRepository implements UniverseRepository {
                         tempPlanetList = new ArrayList<>(); // resets the temp list
                     }
 
-                    // System.out.println("****************************************************************");
-
                     tempPlanetSystem = new PlanetSystem(values[0], values[1]); // create planet system out of CSV values
-                    // System.out.println("Creating new system: " + tempPlanetSystem.getName());
-
                     Star tempStar = new Star(values[2], Double.parseDouble(values[3]), Double.parseDouble(values[4]), Double.parseDouble(values[5]), values[6]); // create center star out of CSV values
-                    // System.out.println("Creating new star: " + tempStar.getName());
                     tempPlanetSystem.setCenterStar(tempStar); // define current star as center star for current planet system
-
                     Planet tempPlanet = new Planet(values[7], Double.parseDouble(values[8]), Double.parseDouble(values[9]), Double.parseDouble(values[10]), Double.parseDouble(values[11]), Double.parseDouble(values[12]), values[13], tempStar); // create planet out of CSV values
-                    //  System.out.println("Creating new plant: " + tempPlanet);
                     tempPlanetList.add(tempPlanet); // add current planet to planet list
 
                 } else {
                     Star tempStar = new Star(values[2], Double.parseDouble(values[3]), Double.parseDouble(values[4]), Double.parseDouble(values[5]), values[6]); // creating local star as variable to make planet object in next line
                     Planet tempPlanet = new Planet(values[7], Double.parseDouble(values[8]), Double.parseDouble(values[9]), Double.parseDouble(values[10]), Double.parseDouble(values[11]), Double.parseDouble(values[12]), values[13], tempStar);
-                    //  System.out.println("Creating new star: " + tempPlanet);
                     tempPlanetList.add(tempPlanet);
                 }
 
@@ -123,34 +116,33 @@ public class UniverseCSVRepository implements UniverseRepository {
     @Override
     public Planet getSinglePlanet(String planetSystemName, String planetName) {
 
-        Planet targetPlanet = null;
+        // Planet targetPlanet = null;
         for (int i = 0; i < readCSVList.size(); i++) {
-            if (readCSVList.get(i).getName().equalsIgnoreCase(planetSystemName)){
-                ArrayList<Planet> targetList = readCSVList.get(i).getPlanetList();
-                for (int y = 0; y < targetList.size(); y++) //get nullPointException here
-                    if (targetList.get(y).getName().equalsIgnoreCase(planetName))
-                        targetPlanet = targetList.get(y);}
+            if (readCSVList.get(i).getName().equalsIgnoreCase(planetSystemName)) {
+                return readCSVList.get(i).getPlanet(planetName);
+            }
         }
-        return targetPlanet;
+        return null;
     }
 
 
-
-
-    /**5-2.2c**/
-    public static void writeToCSVFile(ArrayList<PlanetSystem> readCSVList, File source) { //TODO: Only writing one planet per system, something wrong with my loop?
+    /**
+     * 5-2.2c
+     **/
+    //Only writing one planet per system, something wrong with my loop?
+    public static void writeToCSVFile(ArrayList<PlanetSystem> readCSVList, File source) {
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(source))) {
             for (int i = 0; i < readCSVList.size(); i++) {
-                for (int planet = 0; planet < readCSVList.get(i).getPlanetList().size(); i++){
-                bufferedWriter.write(readCSVList.get(i).getName() + ";" + readCSVList.get(i).getPictureUrl() + ";"
-                        + readCSVList.get(i).getCenterStar().getName() + ";" + readCSVList.get(i).getCenterStar().getRadius() + ";"
-                        + readCSVList.get(i).getCenterStar().getMass() + ";" + readCSVList.get(i).getCenterStar().getEffectiveTemp() + ";"
-                        + readCSVList.get(i).getCenterStar().getPictureUrl() + ";" + readCSVList.get(i).getPlanetList().get(planet).getName() + ";"
-                        + readCSVList.get(i).getPlanetList().get(planet).getRadius() + ";"  + readCSVList.get(i).getPlanetList().get(planet).getMass() + ";"
-                        + readCSVList.get(i).getPlanetList().get(planet).getSemiMajorAxis() + ";" + readCSVList.get(i).getPlanetList().get(planet).getEccentricity() + ";"
-                        + readCSVList.get(i).getPlanetList().get(planet).getOrbitalPeriod() + ";" + readCSVList.get(i).getPlanetList().get(planet).getPictureUrl());
+                for (int planet = 0; planet < readCSVList.get(i).getPlanetList().size(); i++) {
+                    bufferedWriter.write(readCSVList.get(i).getName() + ";" + readCSVList.get(i).getPictureUrl() + ";"
+                            + readCSVList.get(i).getCenterStar().getName() + ";" + readCSVList.get(i).getCenterStar().getRadius() + ";"
+                            + readCSVList.get(i).getCenterStar().getMass() + ";" + readCSVList.get(i).getCenterStar().getEffectiveTemp() + ";"
+                            + readCSVList.get(i).getCenterStar().getPictureUrl() + ";" + readCSVList.get(i).getPlanetList().get(planet).getName() + ";"
+                            + readCSVList.get(i).getPlanetList().get(planet).getRadius() + ";" + readCSVList.get(i).getPlanetList().get(planet).getMass() + ";"
+                            + readCSVList.get(i).getPlanetList().get(planet).getSemiMajorAxis() + ";" + readCSVList.get(i).getPlanetList().get(planet).getEccentricity() + ";"
+                            + readCSVList.get(i).getPlanetList().get(planet).getOrbitalPeriod() + ";" + readCSVList.get(i).getPlanetList().get(planet).getPictureUrl());
 
-                        bufferedWriter.newLine();
+                    bufferedWriter.newLine();
                 }
             }
         } catch (IOException exception) {

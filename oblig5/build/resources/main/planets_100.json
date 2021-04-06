@@ -26,16 +26,6 @@
       "mass" : 1.5599372549019608,
       "effectiveTemp" : 6389.0
     }
-  }, {
-    "type" : "Planet",
-    "name" : "poop",
-    "pictureUrl" : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Elephant_feces_in_the_wildlife.jpg/1920px-Elephant_feces_in_the_wildlife.jpg",
-    "radius" : 1.0,
-    "mass" : 0.0,
-    "semiMajorAxis" : 1.0,
-    "eccentricity" : 1.0,
-    "orbitalPeriod" : 1.0,
-    "centralCelestialBody" : null
   } ]
 }, {
   "name" : "Kepler-1397 System",
@@ -493,6 +483,23 @@
     }
   }, {
     "type" : "Planet",
+    "name" : "Mars",
+    "pictureUrl" : "http://bit.ly/3aGyFvr",
+    "radius" : 0.04741089912158004,
+    "mass" : 3.3667017913593256E-4,
+    "semiMajorAxis" : 1.524,
+    "eccentricity" : 0.093,
+    "orbitalPeriod" : 687.0,
+    "centralCelestialBody" : {
+      "type" : "star",
+      "name" : "Sun",
+      "pictureUrl" : "http://bit.ly/333CTus",
+      "radius" : 1.0,
+      "mass" : 1.0,
+      "effectiveTemp" : 5777.0
+    }
+  }, {
+    "type" : "Planet",
     "name" : "Mercury",
     "pictureUrl" : "http://bit.ly/2TB2Heo",
     "radius" : 0.03412549655905556,
@@ -510,13 +517,13 @@
     }
   }, {
     "type" : "Planet",
-    "name" : "covid-19 free neptune party planet 2021",
-    "pictureUrl" : "https://images.emojiterra.com/google/android-11/512px/1f973.png",
-    "radius" : 2.0,
-    "mass" : 2.0,
-    "semiMajorAxis" : 2.0,
-    "eccentricity" : 1.0,
-    "orbitalPeriod" : 2.0,
+    "name" : "Neptune",
+    "pictureUrl" : "http://bit.ly/38AyEba",
+    "radius" : 0.34440217087226543,
+    "mass" : 0.05395152792413066,
+    "semiMajorAxis" : 30.11,
+    "eccentricity" : 0.01,
+    "orbitalPeriod" : 60225.0,
     "centralCelestialBody" : {
       "type" : "star",
       "name" : "Sun",
@@ -544,24 +551,7 @@
     }
   }, {
     "type" : "Planet",
-    "name" : "Uranus",
-    "pictureUrl" : "http://bit.ly/335pbHy",
-    "radius" : 0.35475297935433336,
-    "mass" : 0.04573761854583773,
-    "semiMajorAxis" : 19.2184,
-    "eccentricity" : 0.046,
-    "orbitalPeriod" : 30660.0,
-    "centralCelestialBody" : {
-      "type" : "star",
-      "name" : "Sun",
-      "pictureUrl" : "http://bit.ly/333CTus",
-      "radius" : 1.0,
-      "mass" : 1.0,
-      "effectiveTemp" : 5777.0
-    }
-  }, {
-    "type" : "Planet",
-    "name" : "Venus",
+    "name" : "VenusS",
     "pictureUrl" : "http://bit.ly/2W3p4L9",
     "radius" : 0.08465003077267387,
     "mass" : 0.002564278187565859,
@@ -578,7 +568,7 @@
     }
   }, {
     "type" : "Planet",
-    "name" : "poop",
+    "name" : "dsa",
     "pictureUrl" : "",
     "radius" : 1.0,
     "mass" : 0.0,

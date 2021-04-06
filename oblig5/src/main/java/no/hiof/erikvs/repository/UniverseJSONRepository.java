@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.*;
 import java.io.File;
 
-//TODO: implementing runnable to allow for making the thread logic
 public class UniverseJSONRepository implements UniverseRepository, Runnable{
 
     // Instantiate HashMap to store JSON data in.
@@ -23,7 +22,6 @@ public class UniverseJSONRepository implements UniverseRepository, Runnable{
         /** 5-2.1 method to read data **/
         // Read data from JSON and store in HashMap - benefits of storing in HashMap is that we can grab data by value over index as would be done in ArrayList.
         try {
-            //System.out.println(jsonFile);
             PlanetSystem[] planetSystemArrayList = objectMapper.readValue(jsonFile, PlanetSystem[].class);
 
             for (PlanetSystem system : planetSystemArrayList) {
@@ -146,7 +144,7 @@ public class UniverseJSONRepository implements UniverseRepository, Runnable{
 
                 planetSystemHashMap.replace(planetSystem.getName(), updatedPlanetSystem); // replaces existing planet system with new updated temp, effectively deleting planet
 
-               // writeToJSONFile(planetSystemHashMap, "src/main/resources/planets_100.json"); //TODO: a call to write
+               // writeToJSONFile(planetSystemHashMap, "src/main/resources/planets_100.json"); //call to write, replaced by run()
                 run();
                 return planetToDelete;
             }
@@ -181,7 +179,7 @@ public class UniverseJSONRepository implements UniverseRepository, Runnable{
 
                 planetSystemHashMap.replace(planetSystem.getName(), updatedPlanetSystem); // replaces existing planet system with new updated temp, effectively deleting planet
 
-                //writeToJSONFile(planetSystemHashMap, "src/main/resources/planets_100.json"); //TODO: a call to write
+                //writeToJSONFile(planetSystemHashMap, "src/main/resources/planets_100.json"); //call to write, replaced by run()
                 run();
                 return null;
             }
@@ -196,13 +194,11 @@ public class UniverseJSONRepository implements UniverseRepository, Runnable{
     @Override
     public Planet updatePlanet(String planetSystemName, String planetName, String PlanetNameNew, double radius, double mass, double semiMajorAxis, double eccentricity, double orbitalPeriod, String pictureUrl) throws IOException {
         for (PlanetSystem planetSystem : planetSystemHashMap.values()) {
-            if (planetSystem.getName().equalsIgnoreCase(planetSystemName)) {// define containing system //TODO: Find system
+            if (planetSystem.getName().equalsIgnoreCase(planetSystemName)) {// define containing system
 
                 PlanetSystem updatedPlanetSystem = planetSystem; // new temp system used to overwrite containing system in hashmap
 
                 ArrayList<Planet> updatedPlanetList = updatedPlanetSystem.getPlanetList(); // new temp planet list = temp list of temp system above
-
-                //TODO: is != bad practice in Java?  How can I make reverse equals/equals for non string
 
                 // Checking for changes to existing planet and effecting change to temp planet if change exists
                 for (int iteration = 0; iteration < updatedPlanetList.size(); iteration++) {
@@ -235,7 +231,7 @@ public class UniverseJSONRepository implements UniverseRepository, Runnable{
 
                 planetSystemHashMap.replace(planetSystem.getName(), updatedPlanetSystem); // replaces existing planet system with new updated temp, effectively deleting planet
 
-                //writeToJSONFile(planetSystemHashMap, "src/main/resources/planets_100.json"); //TODO: a call to write
+                //writeToJSONFile(planetSystemHashMap, "src/main/resources/planets_100.json"); //call to write, replaced by run()
                 run();
                 return null;
             }
